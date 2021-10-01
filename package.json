@@ -1,0 +1,71 @@
+{
+  "name": "@wholebuzz/search",
+  "version": "0.0.1",
+  "description": "Inverted index",
+  "author": "wholebuzz",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wholebuzz/search.git"
+  },
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "tsc -b .",
+    "clean": "tsc -b . --clean",
+    "docs": "typedoc --disableOutputCheck && rm -rf docs/README.md && ./scripts/updateReadmeApiReference.sh",
+    "test": "jest --runInBand --ci --passWithNoTests",
+    "test:coverage": "jest --runInBand --ci --passWithNoTests --coverage --no-cache",
+    "lint": "tslint -c tslint.json --project .",
+    "fix": "yarn lint --fix",
+    "format": "yarn run prettier --config .prettierrc.js --write 'src/*.+(ts)'"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "@sindresorhus/fnv1a": "^2.0.1",
+    "@wholebuzz/fs": "^0.0.12",
+    "base62": "^2.0.1",
+    "binary-merge": "git+https://github.com/wholebuzz/binary-merge",
+    "ellipsize": "^0.1.0",
+    "entities": "^2.0.3",
+    "level": "^7.0.0",
+    "map-obj": "^4.1.0",
+    "mnemonist": "git+https://github.com/wholebuzz/mnemonist",
+    "rimraf": "^3.0.2",
+    "sorted-array-functions": "^1.3.0",
+    "striptags": "^3.1.1",
+    "subleveldown": "^5.0.1",
+    "tfrecord-stream": "0.2.0",
+    "wink-nlp-utils": "^2.0.5"
+  },
+  "devDependencies": {
+    "@types/ellipsize": "^0.1.0",
+    "@types/level": "^6.0.0",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^13.13.5",
+    "@types/rimraf": "^3.0.0",
+    "@types/subleveldown": "^4.1.1",
+    "jest": "^26.6.3",
+    "prettier": "^2.3.2",
+    "ts-jest": "^26.5.4",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "typedoc": "^0.20.35",
+    "typedoc-plugin-markdown": "3.8.2",
+    "typescript": "4.2.4",
+    "typescript-tslint-plugin": "^1.0.1"
+  },
+  "nyc": {
+    "reporter": [
+      "cobertura",
+      "json",
+      "lcov",
+      "text"
+    ]
+  }
+}
