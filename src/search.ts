@@ -343,10 +343,9 @@ export class LevelDocumentMap extends DocumentMap {
   async add(key: string, value: DocStats) {
     const docIdValue = this.nextDocId++
     const docId = docIdValue.toString()
-    await Promise.all([
-      this.idmap.put(key, { docId }),
-      this.docmap.put(docId, value),
-    ]).catch((err) => console.log('LevelDocumentMap.add', err.message))
+    await Promise.all([this.idmap.put(key, { docId }), this.docmap.put(docId, value)]).catch(
+      (err) => console.log('LevelDocumentMap.add', err.message)
+    )
     return docIdValue
   }
 

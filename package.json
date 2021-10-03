@@ -1,7 +1,7 @@
 {
   "name": "@wholebuzz/search",
-  "version": "0.0.1",
-  "description": "Inverted index",
+  "version": "0.0.2",
+  "description": "Persistent inverted index and BM25 search engine with proximity penalty.",
   "author": "wholebuzz",
   "license": "Apache-2.0",
   "repository": {
@@ -44,10 +44,12 @@
   "devDependencies": {
     "@types/ellipsize": "^0.1.0",
     "@types/level": "^6.0.0",
+    "@types/lodash": "^4.14.155",
     "@types/jest": "^26.0.22",
     "@types/node": "^13.13.5",
     "@types/rimraf": "^3.0.0",
     "@types/subleveldown": "^4.1.1",
+    "lodash": "^4.17.15",
     "jest": "^26.6.3",
     "prettier": "^2.3.2",
     "ts-jest": "^26.5.4",
@@ -58,7 +60,8 @@
     "typedoc": "^0.20.35",
     "typedoc-plugin-markdown": "3.8.2",
     "typescript": "4.2.4",
-    "typescript-tslint-plugin": "^1.0.1"
+    "typescript-tslint-plugin": "^1.0.1",
+    "wink-bm25-text-search": "git+https://github.com/wholebuzz/wink-bm25-text-search"
   },
   "nyc": {
     "reporter": [

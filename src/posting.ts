@@ -204,7 +204,7 @@ export class MemoryPostingListDatabase implements PostingListDatabase {
   }
 
   getIDF(): number[] {
-    const ret = (new Array(this.lexicon.idf.length) as any[]) as number[]
+    const ret = new Array(this.lexicon.idf.length) as any[] as number[]
     Object.values(this.lexicon.idf).forEach((v) => (ret[v.id] = v.value))
     return ret
   }
@@ -418,10 +418,8 @@ export class FilePostingListDatabase extends MemoryPostingListDatabase {
       plA.fileEntries ? createBinaryRecordReader(this.fs, this.getUrl(plA.term)) : null,
       plB?.fileEntries ? createBinaryRecordReader(this.fs, this.getUrl(plB.term)) : null,
     ])
-    const [blockA, blockB] = (
-      await Promise.all([inA?.readRecord(), inB?.readRecord()])
-    ).map((x, i) =>
-      x ? new PostingEntryBlock(Buffer.from(x), i === 0 ? plA.term : plB!.term) : null
+    const [blockA, blockB] = (await Promise.all([inA?.readRecord(), inB?.readRecord()])).map(
+      (x, i) => (x ? new PostingEntryBlock(Buffer.from(x), i === 0 ? plA.term : plB!.term) : null)
     )
 
     const heapDataA: HeapItem[] = []

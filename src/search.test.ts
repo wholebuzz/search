@@ -1,28 +1,9 @@
 import { LocalFileSystem } from '@wholebuzz/fs/lib/fs'
 import { readJSON } from '@wholebuzz/fs/lib/json'
 import * as assert from 'assert'
-import * as fs from 'fs'
-import rimraf from 'rimraf'
-import { promisify } from 'util'
 import { FilePostingListDatabase, MemoryPostingListDatabase, PostingEntryBlock } from './posting'
 import { DocumentMap, LevelDocumentMap, MemoryDocumentMap, SearchEngine } from './search'
-
-export interface Event {
-  guid: string
-  type: string
-  props?: Record<string, any> | null
-  tags?: Record<string, any> | null
-  inserted_at?: Date
-  updated_at?: Date
-}
-
-const rmrf = promisify(rimraf)
-
-async function recreateDirectory(dir: string) {
-  await rmrf(dir)
-  fs.mkdirSync(dir)
-  return dir
-}
+import { Event, recreateDirectory, rmrf } from './test.fixture'
 
 it('Should maintain DocumentMap', async () => {
   const file = '/tmp/testDocumentMap.level'
