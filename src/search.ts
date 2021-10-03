@@ -8,8 +8,8 @@ import striptags from 'striptags'
 import sub from 'subleveldown'
 
 export const fnv1a = require('@sindresorhus/fnv1a')
+export const merge = require('@wholebuzz/binary-merge/merge2')
 export const mapObject = require('map-obj')
-export const merge = require('binary-merge/merge2')
 export const nlp = require('wink-nlp-utils')
 
 export interface HasFingerprint {

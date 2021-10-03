@@ -2,6 +2,13 @@
 
 Persistent inverted index and BM25 search engine with proximity penalty.
 
+## Table of contents
+
+### Modules
+
+- [posting](docs/modules/posting.md)
+- [search](docs/modules/search.md)
+
 ## Credits
 
 Scaffolded off [wink-bm25-text-search](https://www.npmjs.com/package/wink-bm25-text-search).
@@ -13,11 +20,13 @@ import { LocalFileSystem } from '@wholebuzz/fs/lib/fs'
 import { FilePostingListDatabase } from '@wholebuzz/search/lib/posting'
 import {
   calcProximityEntryScores,
-  searchConfig
+  searchConfig,
+  SearchEngine
 } from '@wholebuzz/search/lib/search'
 
 const fileSystem = new LocalFileSystem()
-const posting = new FilePostingListDatabase(fileSystem, directory, 2, {
+const existingDirectory = '/tmp/search-test/data'
+const posting = new FilePostingListDatabase(fileSystem, existingDirectory, 2, {
   ...searchConfig,
   scoreTermPair: calcProximityEntryScores,
 })
@@ -25,12 +34,84 @@ await posting.init()
 const search = new SearchEngine(posting)
 await posting.addDoc({ title: 'Foo bar', body: 'baz bat' }, 'docid1')
 const result = await search.search('baz')
+// [ [ 'docid1', 0.28768208622932434 ] ]
+console.log(result)
 await posting.shutdown()
 ```
 
-## Table of contents
+```
+$ find /tmp/search-test/data
+/tmp/search-test/data
+/tmp/search-test/data/21
+/tmp/search-test/data/21/21HWFQ.tfpl
+/tmp/search-test/data/2a
+/tmp/search-test/data/2a/2aN7FU.tfpl
+/tmp/search-test/data/36
+/tmp/search-test/data/36/36XNgb.tfpl
+/tmp/search-test/data/lexicon.json.gz
+/tmp/search-test/data/docmap.level
+/tmp/search-test/data/docmap.level/000003.log
+/tmp/search-test/data/docmap.level/LOCK
+/tmp/search-test/data/docmap.level/CURRENT
+/tmp/search-test/data/docmap.level/LOG
+/tmp/search-test/data/docmap.level/MANIFEST-000002
+/tmp/search-test/data/23
+/tmp/search-test/data/23/23YJVm.tfpl
+```
 
-### Modules
-
-- [posting](docs/modules/posting.md)
-- [search](docs/modules/search.md)
+```
+$ gzip -dc /tmp/search-test/data/lexicon.json.gz | jq .
+{
+  "config": {
+    "bm25Params": {
+      "b": 0.75,
+      "k": 1,
+      "k1": 1.2
+    },
+    "fldWeights": {
+      "author": 1,
+      "body": 1,
+      "title": 2
+    },
+    "ovFldNames": []
+  },
+  "idf": {
+    "baz": {
+      "data": [],
+      "id": 0,
+      "term": "baz",
+      "value": 0.28768207245178085,
+      "fileInode": 334778279,
+      "fileEntries": 1
+    },
+    "bat": {
+      "data": [],
+      "id": 1,
+      "term": "bat",
+      "value": 0.28768207245178085,
+      "fileInode": 334778281,
+      "fileEntries": 1
+    },
+    "foo": {
+      "data": [],
+      "id": 2,
+      "term": "foo",
+      "value": 0.28768207245178085,
+      "fileInode": 334778283,
+      "fileEntries": 1
+    },
+    "bar": {
+      "data": [],
+      "id": 3,
+      "term": "bar",
+      "value": 0.28768207245178085,
+      "fileInode": 334778285,
+      "fileEntries": 1
+    }
+  },
+  "minIDF": 0,
+  "avgCorpusLength": 6,
+  "totalCorpusLength": 6,
+  "totalDocs": 1
+}
+```

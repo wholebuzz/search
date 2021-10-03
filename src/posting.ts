@@ -22,7 +22,7 @@ import {
 } from './search'
 
 export const fnv1a = require('@sindresorhus/fnv1a')
-export const intersect = require('binary-merge/intersect')
+export const intersect = require('@wholebuzz/binary-merge/intersect')
 export const mapObject = require('map-obj')
 export const sorted = require('sorted-array-functions')
 
