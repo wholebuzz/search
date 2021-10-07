@@ -6,48 +6,34 @@
 
 ### Classes
 
-- [FilePostingListDatabase](../classes/posting.filepostinglistdatabase.md)
 - [MemoryPostingListDatabase](../classes/posting.memorypostinglistdatabase.md)
-- [PostingEntryBlock](../classes/posting.postingentryblock.md)
-- [PostingEntryView](../classes/posting.postingentryview.md)
 
 ### Variables
 
-- [fnv1a](posting.md#fnv1a)
 - [intersect](posting.md#intersect)
-- [mapObject](posting.md#mapobject)
+- [merge](posting.md#merge)
 - [sorted](posting.md#sorted)
 
 ### Functions
 
-- [arrayShiftRemove](posting.md#arrayshiftremove)
-- [createBinaryRecordReader](posting.md#createbinaryrecordreader)
-- [createBinaryRecordWriter](posting.md#createbinaryrecordwriter)
-- [genericCompare](posting.md#genericcompare)
+- [addPostingEntryScores](posting.md#addpostingentryscores)
+- [calcProximityEntryScores](posting.md#calcproximityentryscores)
 
 ## Variables
-
-### fnv1a
-
-• `Const` **fnv1a**: *any*
-
-Defined in: posting.ts:24
-
-___
 
 ### intersect
 
 • `Const` **intersect**: *any*
 
-Defined in: posting.ts:25
+Defined in: [src/posting.ts:14](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L14)
 
 ___
 
-### mapObject
+### merge
 
-• `Const` **mapObject**: *any*
+• `Const` **merge**: *any*
 
-Defined in: posting.ts:26
+Defined in: [src/posting.ts:15](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L15)
 
 ___
 
@@ -55,88 +41,40 @@ ___
 
 • `Const` **sorted**: *any*
 
-Defined in: posting.ts:27
+Defined in: [src/posting.ts:16](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L16)
 
 ## Functions
 
-### arrayShiftRemove
+### addPostingEntryScores
 
-▸ **arrayShiftRemove**<X\>(`arr`: X[], `index`: *number*): X
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `X` |
+▸ **addPostingEntryScores**(`entryA`: [*PostingEntry*](../interfaces/types.postingentry.md), `entryB`: [*PostingEntry*](../interfaces/types.postingentry.md), `modify?`: *boolean*): [*PostingEntry*](../interfaces/types.postingentry.md)
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `arr` | X[] |
-| `index` | *number* |
-
-**Returns:** X
-
-Defined in: posting.ts:681
-
-___
-
-### createBinaryRecordReader
-
-▸ **createBinaryRecordReader**(`fileSystem`: FileSystem, `url`: *string*): *Promise*<RecordReader\>
-
-Creates a .tfrecord file reader using arbitrary buffers instead of protobuf.
-
-#### Parameters
-
-| Name | Type | Description |
+| Name | Type | Default value |
 | :------ | :------ | :------ |
-| `fileSystem` | FileSystem | - |
-| `url` | *string* | The URL of the file.tfbinary to read records from. |
+| `entryA` | [*PostingEntry*](../interfaces/types.postingentry.md) | - |
+| `entryB` | [*PostingEntry*](../interfaces/types.postingentry.md) | - |
+| `modify` | *boolean* | false |
 
-**Returns:** *Promise*<RecordReader\>
+**Returns:** [*PostingEntry*](../interfaces/types.postingentry.md)
 
-Defined in: posting.ts:696
+Defined in: [src/posting.ts:220](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L220)
 
 ___
 
-### createBinaryRecordWriter
+### calcProximityEntryScores
 
-▸ **createBinaryRecordWriter**(`fileSystem`: FileSystem, `url`: *string*): *Promise*<RecordWriter\>
-
-Creates a .tfrecord file writer using arbitrary buffers instead of protobuf.
+▸ **calcProximityEntryScores**(`entryA`: [*PostingEntry*](../interfaces/types.postingentry.md), `entryB`: [*PostingEntry*](../interfaces/types.postingentry.md), `modify?`: *boolean*): [*PostingEntry*](../interfaces/types.postingentry.md)
 
 #### Parameters
 
-| Name | Type | Description |
+| Name | Type | Default value |
 | :------ | :------ | :------ |
-| `fileSystem` | FileSystem | - |
-| `url` | *string* | The URL of the file.tfbinary to read records from. |
+| `entryA` | [*PostingEntry*](../interfaces/types.postingentry.md) | - |
+| `entryB` | [*PostingEntry*](../interfaces/types.postingentry.md) | - |
+| `modify` | *boolean* | false |
 
-**Returns:** *Promise*<RecordWriter\>
+**Returns:** [*PostingEntry*](../interfaces/types.postingentry.md)
 
-Defined in: posting.ts:704
-
-___
-
-### genericCompare
-
-▸ **genericCompare**<X\>(`a`: X, `b`: X): ``1`` \| ``-1`` \| ``0``
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `X` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `a` | X |
-| `b` | X |
-
-**Returns:** ``1`` \| ``-1`` \| ``0``
-
-Defined in: posting.ts:688
+Defined in: [src/posting.ts:230](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L230)

@@ -1,8 +1,8 @@
-[@wholebuzz/search](../README.md) / [Exports](../modules.md) / [search](../modules/search.md) / SearchInterface
+[@wholebuzz/search](../README.md) / [Exports](../modules.md) / [types](../modules/types.md) / SearchInterface
 
 # Interface: SearchInterface
 
-[search](../modules/search.md).SearchInterface
+[types](../modules/types.md).SearchInterface
 
 ## Implemented by
 
@@ -12,7 +12,7 @@
 
 ### Methods
 
-- [search](search.searchinterface.md#search)
+- [search](types.searchinterface.md#search)
 
 ## Methods
 
@@ -28,4 +28,4 @@
 
 **Returns:** *Promise*<[*string*, *number*][]\>
 
-Defined in: search.ts:48
+Defined in: [src/types.ts:97](https://github.com/wholebuzz/search/blob/master/src/types.ts#L97)

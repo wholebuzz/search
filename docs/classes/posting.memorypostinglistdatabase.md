@@ -8,11 +8,11 @@
 
 - **MemoryPostingListDatabase**
 
-  ↳ [*FilePostingListDatabase*](posting.filepostinglistdatabase.md)
+  ↳ [*FilePostingListDatabase*](db.filepostinglistdatabase.md)
 
 ## Implements
 
-- [*PostingListDatabase*](../interfaces/search.postinglistdatabase.md)
+- [*PostingListDatabase*](../interfaces/types.postinglistdatabase.md)
 
 ## Table of contents
 
@@ -22,8 +22,9 @@
 
 ### Properties
 
+- [config](posting.memorypostinglistdatabase.md#config)
 - [db](posting.memorypostinglistdatabase.md#db)
-- [docmap](posting.memorypostinglistdatabase.md#docmap)
+- [docids](posting.memorypostinglistdatabase.md#docids)
 - [lexicon](posting.memorypostinglistdatabase.md#lexicon)
 - [prepTasks](posting.memorypostinglistdatabase.md#preptasks)
 - [sectionWeights](posting.memorypostinglistdatabase.md#sectionweights)
@@ -58,7 +59,7 @@
 
 ### constructor
 
-\+ **new MemoryPostingListDatabase**(`config?`: *Record*<string, any\>): [*MemoryPostingListDatabase*](posting.memorypostinglistdatabase.md)
+\+ **new MemoryPostingListDatabase**(`config`: *Record*<string, any\>): [*MemoryPostingListDatabase*](posting.memorypostinglistdatabase.md)
 
 #### Parameters
 
@@ -68,37 +69,43 @@
 
 **Returns:** [*MemoryPostingListDatabase*](posting.memorypostinglistdatabase.md)
 
-Defined in: posting.ts:44
+Defined in: [src/posting.ts:25](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L25)
 
 ## Properties
 
-### db
+### config
 
-• **db**: *Record*<string, [*PostingList*](../interfaces/search.postinglist.md)\>= {}
-
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md).[db](../interfaces/search.postinglistdatabase.md#db)
-
-Defined in: posting.ts:38
+• **config**: *Record*<string, any\>
 
 ___
 
-### docmap
+### db
 
-• `Optional` **docmap**: [*DocumentMap*](search.documentmap.md)
+• **db**: *Record*<string, [*PostingList*](../interfaces/types.postinglist.md)\>= {}
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md).[docmap](../interfaces/search.postinglistdatabase.md#docmap)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md).[db](../interfaces/types.postinglistdatabase.md#db)
 
-Defined in: posting.ts:39
+Defined in: [src/posting.ts:19](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L19)
+
+___
+
+### docids
+
+• `Optional` **docids**: [*DocIdDatabase*](types.dociddatabase.md)
+
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md).[docids](../interfaces/types.postinglistdatabase.md#docids)
+
+Defined in: [src/posting.ts:20](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L20)
 
 ___
 
 ### lexicon
 
-• **lexicon**: [*IDFMap*](../interfaces/search.idfmap.md)
+• **lexicon**: [*IDFMap*](../interfaces/types.idfmap.md)
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md).[lexicon](../interfaces/search.postinglistdatabase.md#lexicon)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md).[lexicon](../interfaces/types.postinglistdatabase.md#lexicon)
 
-Defined in: posting.ts:40
+Defined in: [src/posting.ts:21](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L21)
 
 ___
 
@@ -106,7 +113,7 @@ ___
 
 • **prepTasks**: *any*[]
 
-Defined in: posting.ts:41
+Defined in: [src/posting.ts:22](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L22)
 
 ___
 
@@ -114,7 +121,7 @@ ___
 
 • **sectionWeights**: *number*[]= []
 
-Defined in: posting.ts:43
+Defined in: [src/posting.ts:24](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L24)
 
 ___
 
@@ -122,7 +129,7 @@ ___
 
 • **sections**: *string*[]= []
 
-Defined in: posting.ts:42
+Defined in: [src/posting.ts:23](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L23)
 
 ___
 
@@ -130,7 +137,7 @@ ___
 
 • **termId**: *number*= 0
 
-Defined in: posting.ts:44
+Defined in: [src/posting.ts:25](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L25)
 
 ## Methods
 
@@ -148,9 +155,9 @@ Defined in: posting.ts:44
 
 **Returns:** *Promise*<number\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:142
+Defined in: [src/posting.ts:123](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L123)
 
 ___
 
@@ -166,25 +173,25 @@ ___
 
 **Returns:** *Promise*<boolean\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:79
+Defined in: [src/posting.ts:60](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L60)
 
 ___
 
 ### consolidateIndex
 
-▸ **consolidateIndex**(`index`: [*PostingList*](../interfaces/search.postinglist.md)): *Promise*<void\>
+▸ **consolidateIndex**(`index`: [*PostingList*](../interfaces/types.postinglist.md)): *Promise*<void\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `index` | [*PostingList*](../interfaces/search.postinglist.md) |
+| `index` | [*PostingList*](../interfaces/types.postinglist.md) |
 
 **Returns:** *Promise*<void\>
 
-Defined in: posting.ts:88
+Defined in: [src/posting.ts:69](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L69)
 
 ___
 
@@ -200,9 +207,9 @@ ___
 
 **Returns:** *boolean*
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:66
+Defined in: [src/posting.ts:47](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L47)
 
 ___
 
@@ -219,9 +226,9 @@ ___
 
 **Returns:** *number*
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:74
+Defined in: [src/posting.ts:55](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L55)
 
 ___
 
@@ -237,7 +244,7 @@ ___
 
 **Returns:** *Promise*<string\>
 
-Defined in: posting.ts:112
+Defined in: [src/posting.ts:93](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L93)
 
 ___
 
@@ -247,21 +254,21 @@ ___
 
 **Returns:** *Record*<string, any\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:212
+Defined in: [src/posting.ts:193](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L193)
 
 ___
 
 ### getDocs
 
-▸ **getDocs**(): *Record*<string, [*Document*](../interfaces/search.document.md)\>
+▸ **getDocs**(): *Record*<string, [*Document*](../interfaces/types.document.md)\>
 
-**Returns:** *Record*<string, [*Document*](../interfaces/search.document.md)\>
+**Returns:** *Record*<string, [*Document*](../interfaces/types.document.md)\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:198
+Defined in: [src/posting.ts:179](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L179)
 
 ___
 
@@ -278,7 +285,7 @@ ___
 
 **Returns:** *number*
 
-Defined in: posting.ts:184
+Defined in: [src/posting.ts:165](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L165)
 
 ___
 
@@ -288,9 +295,9 @@ ___
 
 **Returns:** *number*[]
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:206
+Defined in: [src/posting.ts:187](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L187)
 
 ___
 
@@ -300,9 +307,9 @@ ___
 
 **Returns:** *Record*<string, number\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:202
+Defined in: [src/posting.ts:183](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L183)
 
 ___
 
@@ -312,9 +319,9 @@ ___
 
 **Returns:** *number*
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:216
+Defined in: [src/posting.ts:197](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L197)
 
 ___
 
@@ -324,9 +331,9 @@ ___
 
 **Returns:** *number*
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:220
+Defined in: [src/posting.ts:201](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L201)
 
 ___
 
@@ -336,64 +343,64 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:58
+Defined in: [src/posting.ts:39](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L39)
 
 ___
 
 ### intersect
 
-▸ **intersect**(`plA`: [*PostingList*](../interfaces/search.postinglist.md), `plB?`: [*PostingList*](../interfaces/search.postinglist.md)): *Promise*<[*PostingEntry*](../interfaces/search.postingentry.md)[]\>
+▸ **intersect**(`plA`: [*PostingList*](../interfaces/types.postinglist.md), `plB?`: [*PostingList*](../interfaces/types.postinglist.md)): *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `plA` | [*PostingList*](../interfaces/search.postinglist.md) |
-| `plB?` | [*PostingList*](../interfaces/search.postinglist.md) |
+| `plA` | [*PostingList*](../interfaces/types.postinglist.md) |
+| `plB?` | [*PostingList*](../interfaces/types.postinglist.md) |
 
-**Returns:** *Promise*<[*PostingEntry*](../interfaces/search.postingentry.md)[]\>
+**Returns:** *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:224
+Defined in: [src/posting.ts:205](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L205)
 
 ___
 
 ### intersectNext
 
-▸ **intersectNext**(`dataA`: [*PostingEntry*](../interfaces/search.postingentry.md)[], `plB`: [*PostingList*](../interfaces/search.postinglist.md), `modify?`: *boolean*): *Promise*<[*PostingEntry*](../interfaces/search.postingentry.md)[]\>
+▸ **intersectNext**(`dataA`: [*PostingEntry*](../interfaces/types.postingentry.md)[], `plB`: [*PostingList*](../interfaces/types.postinglist.md), `modify?`: *boolean*): *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `dataA` | [*PostingEntry*](../interfaces/search.postingentry.md)[] | - |
-| `plB` | [*PostingList*](../interfaces/search.postinglist.md) | - |
+| `dataA` | [*PostingEntry*](../interfaces/types.postingentry.md)[] | - |
+| `plB` | [*PostingList*](../interfaces/types.postinglist.md) | - |
 | `modify` | *boolean* | false |
 
-**Returns:** *Promise*<[*PostingEntry*](../interfaces/search.postingentry.md)[]\>
+**Returns:** *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:228
+Defined in: [src/posting.ts:209](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L209)
 
 ___
 
 ### onNewPostingListData
 
-▸ **onNewPostingListData**(`_pl`: [*PostingList*](../interfaces/search.postinglist.md)): *void*
+▸ **onNewPostingListData**(`_pl`: [*PostingList*](../interfaces/types.postinglist.md)): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `_pl` | [*PostingList*](../interfaces/search.postinglist.md) |
+| `_pl` | [*PostingList*](../interfaces/types.postinglist.md) |
 
 **Returns:** *void*
 
-Defined in: posting.ts:108
+Defined in: [src/posting.ts:89](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L89)
 
 ___
 
@@ -411,7 +418,7 @@ ___
 
 **Returns:** *number*
 
-Defined in: posting.ts:118
+Defined in: [src/posting.ts:99](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L99)
 
 ___
 
@@ -428,26 +435,26 @@ ___
 
 **Returns:** *Promise*<number\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:166
+Defined in: [src/posting.ts:147](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L147)
 
 ___
 
 ### scoreEntry
 
-▸ **scoreEntry**(`entry`: [*PostingEntry*](../interfaces/search.postingentry.md), `idf`: *number*): *void*
+▸ **scoreEntry**(`entry`: [*PostingEntry*](../interfaces/types.postingentry.md), `idf`: *number*): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `entry` | [*PostingEntry*](../interfaces/search.postingentry.md) |
+| `entry` | [*PostingEntry*](../interfaces/types.postingentry.md) |
 | `idf` | *number* |
 
 **Returns:** *void*
 
-Defined in: posting.ts:97
+Defined in: [src/posting.ts:78](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L78)
 
 ___
 
@@ -457,6 +464,6 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Implementation of: [PostingListDatabase](../interfaces/search.postinglistdatabase.md)
+Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
-Defined in: posting.ts:62
+Defined in: [src/posting.ts:43](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L43)

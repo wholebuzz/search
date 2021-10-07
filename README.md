@@ -6,8 +6,16 @@ Persistent inverted index and BM25 search engine with proximity penalty.
 
 ### Modules
 
+- [db](docs/modules/db.md)
+- [docids](docs/modules/docids.md)
+- [heap](docs/modules/heap.md)
+- [idf](docs/modules/idf.md)
 - [posting](docs/modules/posting.md)
+- [record](docs/modules/record.md)
 - [search](docs/modules/search.md)
+- [test.fixture](docs/modules/test_fixture.md)
+- [tokens](docs/modules/tokens.md)
+- [types](docs/modules/types.md)
 
 ## Credits
 
@@ -17,12 +25,9 @@ Scaffolded off [wink-bm25-text-search](https://www.npmjs.com/package/wink-bm25-t
 
 ```
 import { LocalFileSystem } from '@wholebuzz/fs/lib/fs'
-import { FilePostingListDatabase } from '@wholebuzz/search/lib/posting'
-import {
-  calcProximityEntryScores,
-  searchConfig,
-  SearchEngine
-} from '@wholebuzz/search/lib/search'
+import { FilePostingListDatabase } from '@wholebuzz/search/lib/db'
+import { calcProximityEntryScores } from '@wholebuzz/search/lib/posting'
+import { searchConfig, SearchEngine } from '@wholebuzz/search/lib/search'
 
 const fileSystem = new LocalFileSystem()
 const existingDirectory = '/tmp/search-test/data'
@@ -49,12 +54,12 @@ $ find /tmp/search-test/data
 /tmp/search-test/data/36
 /tmp/search-test/data/36/36XNgb.tfpl
 /tmp/search-test/data/lexicon.json.gz
-/tmp/search-test/data/docmap.level
-/tmp/search-test/data/docmap.level/000003.log
-/tmp/search-test/data/docmap.level/LOCK
-/tmp/search-test/data/docmap.level/CURRENT
-/tmp/search-test/data/docmap.level/LOG
-/tmp/search-test/data/docmap.level/MANIFEST-000002
+/tmp/search-test/data/docids.level
+/tmp/search-test/data/docids.level/000003.log
+/tmp/search-test/data/docids.level/LOCK
+/tmp/search-test/data/docids.level/CURRENT
+/tmp/search-test/data/docids.level/LOG
+/tmp/search-test/data/docids.level/MANIFEST-000002
 /tmp/search-test/data/23
 /tmp/search-test/data/23/23YJVm.tfpl
 ```

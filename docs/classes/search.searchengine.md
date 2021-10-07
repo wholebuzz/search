@@ -6,7 +6,7 @@
 
 ## Implements
 
-- [*SearchInterface*](../interfaces/search.searchinterface.md)
+- [*SearchInterface*](../interfaces/types.searchinterface.md)
 
 ## Table of contents
 
@@ -26,23 +26,23 @@
 
 ### constructor
 
-\+ **new SearchEngine**(`posting`: [*PostingListDatabase*](../interfaces/search.postinglistdatabase.md)): [*SearchEngine*](search.searchengine.md)
+\+ **new SearchEngine**(`posting`: [*PostingListDatabase*](../interfaces/types.postinglistdatabase.md)): [*SearchEngine*](search.searchengine.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `posting` | [*PostingListDatabase*](../interfaces/search.postinglistdatabase.md) |
+| `posting` | [*PostingListDatabase*](../interfaces/types.postinglistdatabase.md) |
 
 **Returns:** [*SearchEngine*](search.searchengine.md)
 
-Defined in: search.ts:370
+Defined in: [src/search.ts:27](https://github.com/wholebuzz/search/blob/master/src/search.ts#L27)
 
 ## Properties
 
 ### posting
 
-• **posting**: [*PostingListDatabase*](../interfaces/search.postinglistdatabase.md)
+• **posting**: [*PostingListDatabase*](../interfaces/types.postinglistdatabase.md)
 
 ## Methods
 
@@ -60,6 +60,6 @@ Defined in: search.ts:370
 
 **Returns:** *Promise*<[*string*, *number*][]\>
 
-Implementation of: [SearchInterface](../interfaces/search.searchinterface.md)
+Implementation of: [SearchInterface](../interfaces/types.searchinterface.md)
 
-Defined in: search.ts:373
+Defined in: [src/search.ts:30](https://github.com/wholebuzz/search/blob/master/src/search.ts#L30)

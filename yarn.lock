@@ -4887,11 +4887,14 @@ which@^2.0.1, which@^2.0.2:
   dependencies:
     isexe "^2.0.0"
 
-"wink-bm25-text-search@git+https://github.com/wholebuzz/wink-bm25-text-search":
-  version "3.0.1"
-  resolved "git+https://github.com/wholebuzz/wink-bm25-text-search#ed3c66d81044144fa10746f00296aeff3cd4ed3d"
+wink-bm25-text-search@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/wink-bm25-text-search/-/wink-bm25-text-search-3.1.0.tgz#3ec1223f586924f410723496b5c1973a4df159db"
+  integrity sha512-WhEE6geKP2JWZzhXvZImu0xbEBwN12yx5/E3/TsDP5jIP/BcfQtMTFnlDmRvygSbNQYu+WIvEh2t4nuPMEkRFw==
   dependencies:
+    wink-eng-lite-web-model "^1.2.2"
     wink-helpers "^2.0.0"
+    wink-nlp "^1.8.1"
     wink-nlp-utils "^2.0.4"
 
 wink-distance@^2.0.1:
@@ -4901,6 +4904,11 @@ wink-distance@^2.0.1:
   dependencies:
     wink-helpers "^2.0.0"
     wink-jaro-distance "^2.0.0"
+
+wink-eng-lite-web-model@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/wink-eng-lite-web-model/-/wink-eng-lite-web-model-1.2.2.tgz#e651a9f5bdcba537fd353fc702b1f1e39e66e9ed"
+  integrity sha512-tOELH6NGNHWrrsH3hCs7b6g9APEPT8LoQrT5Dipqf611g9KdEzuNAdbM3Dl3zFo+p1YNo4ITl6N668cPjbflpw==
 
 wink-helpers@^2.0.0:
   version "2.0.0"
@@ -4921,6 +4929,11 @@ wink-nlp-utils@^2.0.4, wink-nlp-utils@^2.0.5:
     wink-helpers "^2.0.0"
     wink-porter2-stemmer "^2.0.1"
     wink-tokenizer "^5.2.3"
+
+wink-nlp@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/wink-nlp/-/wink-nlp-1.8.1.tgz#3dd319870ad06ca161639207fa007e45694c01be"
+  integrity sha512-2PMhSyDkUbrDiq0t200RdLsRfw3svFXcYd9ALo/Qt6c1jBlLDNWiSmInYJY9Elt7MGctRt/MMq0/qjeCIvjbWA==
 
 wink-porter2-stemmer@^2.0.1:
   version "2.0.1"

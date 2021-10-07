@@ -2,27 +2,23 @@ import { LocalFileSystem } from '@wholebuzz/fs/lib/fs'
 import { readJSON } from '@wholebuzz/fs/lib/json'
 import * as assert from 'assert'
 import _ from 'lodash'
-import { FilePostingListDatabase, MemoryPostingListDatabase } from './posting'
-import {
-  DocumentDatabase,
-  getIDFMap,
-  getTFIDF,
-  newIDFMap,
-  SearchEngine,
-  simhashIDF,
-  tokenIdHash,
-  tokenizeForSearch,
-} from './search'
-import { Event, HasFingerprint, recreateDirectory, sleep } from './test.fixture'
+import { FilePostingListDatabase } from './db'
+import { getIDFMap, getTFIDF, newIDFMap, simhashIDF, tokenIdHash } from './idf'
+import { addPostingEntryScores, MemoryPostingListDatabase } from './posting'
+import { searchConfig, SearchEngine } from './search'
+import { Event, recreateDirectory, sleep } from './test.fixture'
+import { tokenizeForSearch } from './tokens'
+import { DocumentDatabase, HasFingerprint } from './types'
 
 it('Should hash the same with IDFMap and SearchEngine', async () => {
   const locale = 'en_US'
   const fingerprintBits = 64
-  const memoryPl = new SearchEngine(new MemoryPostingListDatabase())
+  const memoryPl = new SearchEngine(new MemoryPostingListDatabase(searchConfig))
   const diskDb = new FilePostingListDatabase(
     new LocalFileSystem(),
     await recreateDirectory('/tmp/cluster-test'),
-    0
+    0,
+    searchConfig
   )
   const diskPl = new SearchEngine(diskDb)
   const wink = require('wink-bm25-text-search')()
@@ -30,6 +26,7 @@ it('Should hash the same with IDFMap and SearchEngine', async () => {
     bm25Params: { b: 0.75, k: 1, k1: 1.2 },
     fldWeights: { author: 1, body: 1, title: 1 },
     freqPrecision: 4,
+    scoreTermPair: addPostingEntryScores,
   }
   memoryPl.posting.defineConfig(config)
   diskPl.posting.defineConfig(config)
@@ -61,6 +58,7 @@ it('Should hash the same with IDFMap and SearchEngine', async () => {
   const idf = newIDFMap(input, (x) => x?.props?.title ?? '', config)
   const winkIDF = getIDFMap(wink)
   winkIDF.config.freqPrecision = config.freqPrecision
+  winkIDF.config.scoreTermPair = config.scoreTermPair
   assert.deepEqual(winkIDF, idf)
   for (const [_key, value] of Object.entries(memoryPl.posting.lexicon.idf)) {
     delete (value as any).consolidated

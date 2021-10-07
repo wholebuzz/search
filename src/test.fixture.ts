@@ -3,16 +3,13 @@ import rimraf from 'rimraf'
 import { promisify } from 'util'
 
 export interface Event {
+  date: Date
   guid: string
   type: string
   props?: Record<string, any> | null
   tags?: Record<string, any> | null
   inserted_at?: Date
   updated_at?: Date
-}
-
-export interface HasFingerprint {
-  fingerprint: bigint
 }
 
 export const rmrf = promisify(rimraf)

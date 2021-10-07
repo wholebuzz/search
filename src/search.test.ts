@@ -1,16 +1,20 @@
 import { LocalFileSystem } from '@wholebuzz/fs/lib/fs'
 import { readJSON } from '@wholebuzz/fs/lib/json'
 import * as assert from 'assert'
-import { FilePostingListDatabase, MemoryPostingListDatabase, PostingEntryBlock } from './posting'
-import { DocumentMap, LevelDocumentMap, MemoryDocumentMap, SearchEngine } from './search'
+import { FilePostingListDatabase } from './db'
+import { LevelDocIdDatabase, MemoryDocIdDatabase } from './docids'
+import { MemoryPostingListDatabase } from './posting'
+import { PostingEntryBlock } from './record'
+import { searchConfig, SearchEngine } from './search'
 import { Event, recreateDirectory, rmrf } from './test.fixture'
+import { DocIdDatabase } from './types'
 
-it('Should maintain DocumentMap', async () => {
-  const file = '/tmp/testDocumentMap.level'
+it('Should maintain DocIdDatabase', async () => {
+  const file = '/tmp/testDocIdDatabase.level'
   await rmrf(file)
   for (const implementation of ['memory', 'level']) {
-    const db: DocumentMap =
-      implementation === 'memory' ? new MemoryDocumentMap() : new LevelDocumentMap(file)
+    const db: DocIdDatabase =
+      implementation === 'memory' ? new MemoryDocIdDatabase() : new LevelDocIdDatabase(file)
     const docIdVars = (docId: bigint) => {
       const key = `foobar${docId}`
       return { key, value: { guid: key } }
@@ -31,7 +35,7 @@ it('Should maintain DocumentMap', async () => {
 })
 
 it('Should serialize posting lists correctly', async () => {
-  const simple = new SearchEngine(new MemoryPostingListDatabase())
+  const simple = new SearchEngine(new MemoryPostingListDatabase(searchConfig))
   const input = (await readJSON(new LocalFileSystem(), './test/news.json')) as Event[]
   input.forEach((item: Event, i: number) => {
     simple.posting
@@ -64,7 +68,7 @@ it('Should reopen same index', async () => {
   await rmrf(dir)
   const fs = new LocalFileSystem()
   const input = (await readJSON(fs, './test/news.json')) as Event[]
-  let posting = new FilePostingListDatabase(fs, await recreateDirectory(dir))
+  let posting = new FilePostingListDatabase(fs, await recreateDirectory(dir), 2, searchConfig)
   await posting.init()
   input.forEach((item: Event, i: number) => {
     posting
@@ -73,7 +77,7 @@ it('Should reopen same index', async () => {
   })
   await posting.shutdown()
 
-  posting = new FilePostingListDatabase(fs, dir)
+  posting = new FilePostingListDatabase(fs, dir, 2, searchConfig)
   await posting.init()
   const search = new SearchEngine(posting)
   const results = await search.search('antique globes')
