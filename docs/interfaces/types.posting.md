@@ -1,28 +1,28 @@
-[@wholebuzz/search](../README.md) / [Exports](../modules.md) / [types](../modules/types.md) / PostingEntry
+[@wholebuzz/search](../README.md) / [Exports](../modules.md) / [types](../modules/types.md) / Posting
 
-# Interface: PostingEntry
+# Interface: Posting
 
-[types](../modules/types.md).PostingEntry
+[types](../modules/types.md).Posting
 
 ## Hierarchy
 
 - [*HasDocId*](types.hasdocid.md)
 
-  ↳ **PostingEntry**
+  ↳ **Posting**
 
 ## Implemented by
 
-- [*PostingEntryView*](../classes/record.postingentryview.md)
+- [*PostingView*](../classes/record.postingview.md)
 
 ## Table of contents
 
 ### Properties
 
-- [docid](types.postingentry.md#docid)
-- [doclen](types.postingentry.md#doclen)
-- [occurrences](types.postingentry.md#occurrences)
-- [score](types.postingentry.md#score)
-- [sections](types.postingentry.md#sections)
+- [docid](types.posting.md#docid)
+- [doclen](types.posting.md#doclen)
+- [occurrences](types.posting.md#occurrences)
+- [score](types.posting.md#score)
+- [sections](types.posting.md#sections)
 
 ## Properties
 
@@ -32,7 +32,7 @@
 
 Inherited from: [HasDocId](types.hasdocid.md).[docid](types.hasdocid.md#docid)
 
-Defined in: [src/types.ts:14](https://github.com/wholebuzz/search/blob/master/src/types.ts#L14)
+Defined in: [src/types.ts:2](https://github.com/wholebuzz/search/blob/master/src/types.ts#L2)
 
 ___
 

@@ -3,7 +3,7 @@ import { LevelUp } from 'levelup'
 import sub from 'subleveldown'
 import { DocIdDatabase, DocStats } from './types'
 
-export class MemoryDocIdDatabase extends DocIdDatabase {
+export class MemoryDocIdDatabase implements DocIdDatabase {
   docmap: Map<bigint, DocStats> = new Map()
   idmap: Map<string, bigint> = new Map()
   nextDocId: bigint = BigInt(1)
@@ -44,14 +44,13 @@ export class MemoryDocIdDatabase extends DocIdDatabase {
   }
 }
 
-export class LevelDocIdDatabase extends DocIdDatabase {
+export class LevelDocIdDatabase implements DocIdDatabase {
   nextDocId: bigint = BigInt(1)
   db: level.LevelDB
   docmap: LevelUp
   idmap: LevelUp
 
   constructor(public path: string) {
-    super()
     this.db = level(path)
     this.docmap = sub(this.db, 'docmap', { valueEncoding: 'json' })
     this.idmap = sub(this.db, 'idmap', { valueEncoding: 'json' })

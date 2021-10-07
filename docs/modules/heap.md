@@ -27,7 +27,7 @@
 
 ### addHeapItemList
 
-▸ `Const` **addHeapItemList**(`target`: [*HeapItem*](../interfaces/heap.heapitem.md)[], `term`: *undefined* \| *string*, `pl`: *undefined* \| ``null`` \| { `data`: [*PostingEntry*](../interfaces/types.postingentry.md)[]  }, `reader?`: ``null`` \| [*RecordReader*](../classes/record.recordreader.md)): *void*
+▸ `Const` **addHeapItemList**(`target`: [*HeapItem*](../interfaces/heap.heapitem.md)[], `term`: *undefined* \| *string*, `pl`: *undefined* \| ``null`` \| { `data`: [*Posting*](../interfaces/types.posting.md)[]  }, `reader?`: ``null`` \| [*RecordReader*](../classes/record.recordreader.md)): *void*
 
 #### Parameters
 
@@ -35,7 +35,7 @@
 | :------ | :------ |
 | `target` | [*HeapItem*](../interfaces/heap.heapitem.md)[] |
 | `term` | *undefined* \| *string* |
-| `pl` | *undefined* \| ``null`` \| { `data`: [*PostingEntry*](../interfaces/types.postingentry.md)[]  } |
+| `pl` | *undefined* \| ``null`` \| { `data`: [*Posting*](../interfaces/types.posting.md)[]  } |
 | `reader?` | ``null`` \| [*RecordReader*](../classes/record.recordreader.md) |
 
 **Returns:** *void*
@@ -80,7 +80,7 @@ ___
 
 ### copyHeapData
 
-▸ `Const` **copyHeapData**(`heap`: [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\>): *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
+▸ `Const` **copyHeapData**(`heap`: [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\>): *Promise*<[*Posting*](../interfaces/types.posting.md)[]\>
 
 #### Parameters
 
@@ -88,7 +88,7 @@ ___
 | :------ | :------ |
 | `heap` | [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\> |
 
-**Returns:** *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
+**Returns:** *Promise*<[*Posting*](../interfaces/types.posting.md)[]\>
 
 Defined in: [src/heap.ts:88](https://github.com/wholebuzz/search/blob/master/src/heap.ts#L88)
 
@@ -136,7 +136,7 @@ ___
 
 ### intersectHeaps
 
-▸ `Const` **intersectHeaps**(`heapA`: [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\>, `heapB`: [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\>, `scoreF`: (`entryA`: [*PostingEntry*](../interfaces/types.postingentry.md), `entryB`: [*PostingEntry*](../interfaces/types.postingentry.md), `modify`: *boolean*) => [*PostingEntry*](../interfaces/types.postingentry.md), `modify?`: *boolean*): *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
+▸ `Const` **intersectHeaps**(`heapA`: [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\>, `heapB`: [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\>, `scoreF`: (`postingA`: [*Posting*](../interfaces/types.posting.md), `postingB`: [*Posting*](../interfaces/types.posting.md), `modify`: *boolean*) => [*Posting*](../interfaces/types.posting.md), `modify?`: *boolean*): *Promise*<[*Posting*](../interfaces/types.posting.md)[]\>
 
 #### Parameters
 
@@ -144,10 +144,10 @@ ___
 | :------ | :------ | :------ |
 | `heapA` | [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\> | - |
 | `heapB` | [*MinHeap*](../classes/heap.minheap.md)<[*HeapItem*](../interfaces/heap.heapitem.md)\> | - |
-| `scoreF` | (`entryA`: [*PostingEntry*](../interfaces/types.postingentry.md), `entryB`: [*PostingEntry*](../interfaces/types.postingentry.md), `modify`: *boolean*) => [*PostingEntry*](../interfaces/types.postingentry.md) | - |
+| `scoreF` | (`postingA`: [*Posting*](../interfaces/types.posting.md), `postingB`: [*Posting*](../interfaces/types.posting.md), `modify`: *boolean*) => [*Posting*](../interfaces/types.posting.md) | - |
 | `modify` | *boolean* | false |
 
-**Returns:** *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
+**Returns:** *Promise*<[*Posting*](../interfaces/types.posting.md)[]\>
 
 Defined in: [src/heap.ts:55](https://github.com/wholebuzz/search/blob/master/src/heap.ts#L55)
 

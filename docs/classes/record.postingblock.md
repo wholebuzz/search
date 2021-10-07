@@ -1,38 +1,38 @@
-[@wholebuzz/search](../README.md) / [Exports](../modules.md) / [record](../modules/record.md) / PostingEntryBlock
+[@wholebuzz/search](../README.md) / [Exports](../modules.md) / [record](../modules/record.md) / PostingBlock
 
-# Class: PostingEntryBlock
+# Class: PostingBlock
 
-[record](../modules/record.md).PostingEntryBlock
+[record](../modules/record.md).PostingBlock
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](record.postingentryblock.md#constructor)
+- [constructor](record.postingblock.md#constructor)
 
 ### Properties
 
-- [buffer](record.postingentryblock.md#buffer)
-- [data](record.postingentryblock.md#data)
-- [docIds](record.postingentryblock.md#docids)
-- [docLengths](record.postingentryblock.md#doclengths)
-- [docOccurrencesEnds](record.postingentryblock.md#dococcurrencesends)
-- [docScores](record.postingentryblock.md#docscores)
-- [length](record.postingentryblock.md#length)
-- [occurrences](record.postingentryblock.md#occurrences)
-- [sections](record.postingentryblock.md#sections)
-- [sectionsLength](record.postingentryblock.md#sectionslength)
-- [headerLength](record.postingentryblock.md#headerlength)
+- [buffer](record.postingblock.md#buffer)
+- [data](record.postingblock.md#data)
+- [docIds](record.postingblock.md#docids)
+- [docLengths](record.postingblock.md#doclengths)
+- [docOccurrencesEnds](record.postingblock.md#dococcurrencesends)
+- [docScores](record.postingblock.md#docscores)
+- [length](record.postingblock.md#length)
+- [occurrences](record.postingblock.md#occurrences)
+- [sections](record.postingblock.md#sections)
+- [sectionsLength](record.postingblock.md#sectionslength)
+- [headerLength](record.postingblock.md#headerlength)
 
 ### Methods
 
-- [createFrom](record.postingentryblock.md#createfrom)
+- [createFrom](record.postingblock.md#createfrom)
 
 ## Constructors
 
 ### constructor
 
-\+ **new PostingEntryBlock**(`buffer`: *Buffer*, `_term`: *string*): [*PostingEntryBlock*](record.postingentryblock.md)
+\+ **new PostingBlock**(`buffer`: *Buffer*, `_term`: *string*): [*PostingBlock*](record.postingblock.md)
 
 #### Parameters
 
@@ -41,7 +41,7 @@
 | `buffer` | *Buffer* |
 | `_term` | *string* |
 
-**Returns:** [*PostingEntryBlock*](record.postingentryblock.md)
+**Returns:** [*PostingBlock*](record.postingblock.md)
 
 Defined in: [src/record.ts:116](https://github.com/wholebuzz/search/blob/master/src/record.ts#L116)
 
@@ -55,7 +55,7 @@ ___
 
 ### data
 
-• **data**: [*PostingEntryView*](record.postingentryview.md)[]
+• **data**: [*PostingView*](record.postingview.md)[]
 
 Defined in: [src/record.ts:116](https://github.com/wholebuzz/search/blob/master/src/record.ts#L116)
 
@@ -135,15 +135,15 @@ Defined in: [src/record.ts:60](https://github.com/wholebuzz/search/blob/master/s
 
 ### createFrom
 
-▸ `Static` **createFrom**(`input`: [*PostingEntry*](../interfaces/types.postingentry.md)[], `term`: *string*): [*PostingEntryBlock*](record.postingentryblock.md)
+▸ `Static` **createFrom**(`input`: [*Posting*](../interfaces/types.posting.md)[], `term`: *string*): [*PostingBlock*](record.postingblock.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `input` | [*PostingEntry*](../interfaces/types.postingentry.md)[] |
+| `input` | [*Posting*](../interfaces/types.posting.md)[] |
 | `term` | *string* |
 
-**Returns:** [*PostingEntryBlock*](record.postingentryblock.md)
+**Returns:** [*PostingBlock*](record.postingblock.md)
 
 Defined in: [src/record.ts:62](https://github.com/wholebuzz/search/blob/master/src/record.ts#L62)

@@ -25,7 +25,7 @@
 
 ### data
 
-• **data**: [*PostingEntry*](types.postingentry.md)[]
+• **data**: [*Posting*](types.posting.md)[]
 
 Defined in: [src/types.ts:31](https://github.com/wholebuzz/search/blob/master/src/types.ts#L31)
 

@@ -6,8 +6,8 @@
 
 ### Classes
 
-- [PostingEntryBlock](../classes/record.postingentryblock.md)
-- [PostingEntryView](../classes/record.postingentryview.md)
+- [PostingBlock](../classes/record.postingblock.md)
+- [PostingView](../classes/record.postingview.md)
 - [RecordReader](../classes/record.recordreader.md)
 - [RecordWriter](../classes/record.recordwriter.md)
 

@@ -1,17 +1,17 @@
-export interface HasFingerprint {
-  fingerprint: bigint
+export interface HasDocId {
+  docid: string | bigint
 }
 
 export interface HasEmbedding {
   embedding: number[]
 }
 
-export interface HasScore {
-  score: number
+export interface HasFingerprint {
+  fingerprint: bigint
 }
 
-export interface HasDocId {
-  docid: string | bigint
+export interface HasScore {
+  score: number
 }
 
 export interface IdValue {
@@ -19,7 +19,7 @@ export interface IdValue {
   value: number
 }
 
-export interface PostingEntry extends HasDocId {
+export interface Posting extends HasDocId {
   score: number
   doclen: number
   sections: ArrayLike<number>
@@ -28,47 +28,33 @@ export interface PostingEntry extends HasDocId {
 
 export interface PostingList extends IdValue {
   term: string
-  data: PostingEntry[]
+  data: Posting[]
   fileEntries?: number
   fileInode?: number
-}
-
-export abstract class DocIdDatabase {
-  abstract get(docId: bigint): Promise<DocStats | undefined>
-  abstract add(key: string, value: DocStats): Promise<bigint>
-  abstract remove(key: string): Promise<bigint | null>
-  abstract resolve<I, O>(
-    query: I[],
-    getter: (x: I) => bigint,
-    putter: (x: I, y: DocStats) => O
-  ): Promise<O[]>
-  abstract close(): Promise<void>
-}
-
-export interface PostingListDatabase extends DocumentDatabase {
-  db: Record<string, PostingList>
-  lexicon: IDFMap
-  docids?: DocIdDatabase
-
-  init(): Promise<void>
-  shutdown(): Promise<void>
-  intersect(x: PostingList, y?: PostingList): Promise<PostingEntry[]>
-  intersectNext(x: PostingEntry[], y: PostingList, modifyX: boolean): Promise<PostingEntry[]>
-}
-
-export interface IDFMap {
-  config: Record<string, any>
-  idf: Record<string, IdValue>
-  minIDF: number
-  avgCorpusLength: number
-  totalCorpusLength: number
-  totalDocs: number
-  version?: Date
 }
 
 export interface Document {
   freq: Record<string, number>
   length: number
+}
+
+export interface DocStats {
+  guid: string
+  doclen?: number
+  sections?: number[]
+  archived?: string
+}
+
+export interface DocIdDatabase {
+  get(docId: bigint): Promise<DocStats | undefined>
+  add(key: string, value: DocStats): Promise<bigint>
+  remove(key: string): Promise<bigint | null>
+  resolve<I, O>(
+    query: I[],
+    getter: (x: I) => bigint,
+    putter: (x: I, y: DocStats) => O
+  ): Promise<O[]>
+  close(): Promise<void>
 }
 
 export interface DocumentDatabase {
@@ -86,11 +72,25 @@ export interface DocumentDatabase {
   getTotalDocs(): number
 }
 
-export interface DocStats {
-  guid: string
-  doclen?: number
-  sections?: number[]
-  archived?: string
+export interface IDFMap {
+  config: Record<string, any>
+  idf: Record<string, IdValue>
+  minIDF: number
+  avgCorpusLength: number
+  totalCorpusLength: number
+  totalDocs: number
+  version?: Date
+}
+
+export interface PostingListDatabase extends DocumentDatabase {
+  db: Record<string, PostingList>
+  lexicon: IDFMap
+  docids?: DocIdDatabase
+
+  init(): Promise<void>
+  shutdown(): Promise<void>
+  intersect(x: PostingList, y?: PostingList): Promise<Posting[]>
+  intersectNext(x: Posting[], y: PostingList, modifyX: boolean): Promise<Posting[]>
 }
 
 export interface SearchInterface {

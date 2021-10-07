@@ -4,12 +4,9 @@
 
 ## Table of contents
 
-### Classes
-
-- [DocIdDatabase](../classes/types.dociddatabase.md)
-
 ### Interfaces
 
+- [DocIdDatabase](../interfaces/types.dociddatabase.md)
 - [DocStats](../interfaces/types.docstats.md)
 - [Document](../interfaces/types.document.md)
 - [DocumentDatabase](../interfaces/types.documentdatabase.md)
@@ -19,7 +16,7 @@
 - [HasScore](../interfaces/types.hasscore.md)
 - [IDFMap](../interfaces/types.idfmap.md)
 - [IdValue](../interfaces/types.idvalue.md)
-- [PostingEntry](../interfaces/types.postingentry.md)
+- [Posting](../interfaces/types.posting.md)
 - [PostingList](../interfaces/types.postinglist.md)
 - [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 - [SearchInterface](../interfaces/types.searchinterface.md)

@@ -8,7 +8,7 @@
 
 - **HasDocId**
 
-  ↳ [*PostingEntry*](types.postingentry.md)
+  ↳ [*Posting*](types.posting.md)
 
 ## Table of contents
 
@@ -22,4 +22,4 @@
 
 • **docid**: *string* \| *bigint*
 
-Defined in: [src/types.ts:14](https://github.com/wholebuzz/search/blob/master/src/types.ts#L14)
+Defined in: [src/types.ts:2](https://github.com/wholebuzz/search/blob/master/src/types.ts#L2)

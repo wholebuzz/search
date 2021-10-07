@@ -15,9 +15,9 @@ import {
 } from './heap'
 import { readIDFMap, writeIDFMap } from './idf'
 import { MemoryPostingListDatabase, sorted } from './posting'
-import { createBinaryRecordReader, createBinaryRecordWriter, PostingEntryBlock } from './record'
+import { createBinaryRecordReader, createBinaryRecordWriter, PostingBlock } from './record'
 import { fnv1a } from './tokens'
-import { DocIdDatabase, PostingEntry, PostingList } from './types'
+import { DocIdDatabase, Posting, PostingList } from './types'
 
 export class FilePostingListDatabase extends MemoryPostingListDatabase {
   flushTrain: PostingList[] = []
@@ -153,7 +153,7 @@ export class FilePostingListDatabase extends MemoryPostingListDatabase {
     const currentReader = newIndex ? null : await createBinaryRecordReader(this.fs, url)
     const currentRecord = currentReader ? await currentReader.readRecord() : null
     const currentBlock = currentRecord
-      ? new PostingEntryBlock(Buffer.from(currentRecord), index.term)
+      ? new PostingBlock(Buffer.from(currentRecord), index.term)
       : null
     const heapData: HeapItem[] = []
     addHeapItemList(heapData, index.term, { data: indexData })
@@ -163,26 +163,26 @@ export class FilePostingListDatabase extends MemoryPostingListDatabase {
     const outUrl = url + (newIndex ? '' : '.new')
     if (this.directoryPrefix) await this.fs.ensureDirectory(path.dirname(outUrl))
     const out = await createBinaryRecordWriter(this.fs, outUrl)
-    let newBlock: PostingEntry[] = []
+    let newBlock: Posting[] = []
     let numNewEntries = 0
     while (true) {
       const item = heap.peek()
-      if (item && (!this.docids || (await this.docids.get(item.entry.docid as bigint)))) {
-        const entry = item.reader
+      if (item && (!this.docids || (await this.docids.get(item.posting.docid as bigint)))) {
+        const posting = item.reader
           ? {
-              docid: item.entry.docid,
-              doclen: item.entry.doclen,
-              occurrences: item.entry.occurrences,
-              score: item.entry.score,
-              sections: item.entry.sections,
+              docid: item.posting.docid,
+              doclen: item.posting.doclen,
+              occurrences: item.posting.occurrences,
+              score: item.posting.score,
+              sections: item.posting.sections,
             }
-          : item.entry
-        if (item.reader) this.scoreEntry(entry, index.value)
-        newBlock.push(entry)
+          : item.posting
+        if (item.reader) this.scorePosting(posting, index.value)
+        newBlock.push(posting)
         numNewEntries++
       }
       if (newBlock.length >= this.blockSize || (!item && newBlock.length > 0)) {
-        const newEntries = PostingEntryBlock.createFrom(newBlock, index.term).buffer
+        const newEntries = PostingBlock.createFrom(newBlock, index.term).buffer
         await out.writeRecord(Buffer.from(newEntries))
         newBlock = []
       }
@@ -200,13 +200,13 @@ export class FilePostingListDatabase extends MemoryPostingListDatabase {
     index.fileEntries = numNewEntries
   }
 
-  async intersect(plA: PostingList, plB?: PostingList): Promise<PostingEntry[]> {
+  async intersect(plA: PostingList, plB?: PostingList): Promise<Posting[]> {
     const [inA, inB] = await Promise.all([
       plA.fileEntries ? createBinaryRecordReader(this.fs, this.getUrl(plA.term)) : null,
       plB?.fileEntries ? createBinaryRecordReader(this.fs, this.getUrl(plB.term)) : null,
     ])
     const [blockA, blockB] = (await Promise.all([inA?.readRecord(), inB?.readRecord()])).map(
-      (x, i) => (x ? new PostingEntryBlock(Buffer.from(x), i === 0 ? plA.term : plB!.term) : null)
+      (x, i) => (x ? new PostingBlock(Buffer.from(x), i === 0 ? plA.term : plB!.term) : null)
     )
 
     const heapDataA: HeapItem[] = []
@@ -226,16 +226,12 @@ export class FilePostingListDatabase extends MemoryPostingListDatabase {
     return ret
   }
 
-  async intersectNext(
-    dataA: PostingEntry[],
-    plB: PostingList,
-    _modify = false
-  ): Promise<PostingEntry[]> {
+  async intersectNext(dataA: Posting[], plB: PostingList, _modify = false): Promise<Posting[]> {
     const inB = plB?.fileEntries
       ? await createBinaryRecordReader(this.fs, this.getUrl(plB.term))
       : null
     const recordB = inB ? await inB?.readRecord() : null
-    const blockB = recordB ? new PostingEntryBlock(Buffer.from(recordB), plB.term) : null
+    const blockB = recordB ? new PostingBlock(Buffer.from(recordB), plB.term) : null
 
     const heapDataA: HeapItem[] = []
     const heapDataB: HeapItem[] = []

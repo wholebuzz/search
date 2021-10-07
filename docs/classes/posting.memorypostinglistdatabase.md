@@ -52,7 +52,7 @@
 - [onNewPostingListData](posting.memorypostinglistdatabase.md#onnewpostinglistdata)
 - [parseDoc](posting.memorypostinglistdatabase.md#parsedoc)
 - [removeDoc](posting.memorypostinglistdatabase.md#removedoc)
-- [scoreEntry](posting.memorypostinglistdatabase.md#scoreentry)
+- [scorePosting](posting.memorypostinglistdatabase.md#scoreposting)
 - [shutdown](posting.memorypostinglistdatabase.md#shutdown)
 
 ## Constructors
@@ -91,7 +91,7 @@ ___
 
 ### docids
 
-• `Optional` **docids**: [*DocIdDatabase*](types.dociddatabase.md)
+• `Optional` **docids**: [*DocIdDatabase*](../interfaces/types.dociddatabase.md)
 
 Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md).[docids](../interfaces/types.postinglistdatabase.md#docids)
 
@@ -351,7 +351,7 @@ ___
 
 ### intersect
 
-▸ **intersect**(`plA`: [*PostingList*](../interfaces/types.postinglist.md), `plB?`: [*PostingList*](../interfaces/types.postinglist.md)): *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
+▸ **intersect**(`plA`: [*PostingList*](../interfaces/types.postinglist.md), `plB?`: [*PostingList*](../interfaces/types.postinglist.md)): *Promise*<[*Posting*](../interfaces/types.posting.md)[]\>
 
 #### Parameters
 
@@ -360,7 +360,7 @@ ___
 | `plA` | [*PostingList*](../interfaces/types.postinglist.md) |
 | `plB?` | [*PostingList*](../interfaces/types.postinglist.md) |
 
-**Returns:** *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
+**Returns:** *Promise*<[*Posting*](../interfaces/types.posting.md)[]\>
 
 Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
@@ -370,17 +370,17 @@ ___
 
 ### intersectNext
 
-▸ **intersectNext**(`dataA`: [*PostingEntry*](../interfaces/types.postingentry.md)[], `plB`: [*PostingList*](../interfaces/types.postinglist.md), `modify?`: *boolean*): *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
+▸ **intersectNext**(`dataA`: [*Posting*](../interfaces/types.posting.md)[], `plB`: [*PostingList*](../interfaces/types.postinglist.md), `modify?`: *boolean*): *Promise*<[*Posting*](../interfaces/types.posting.md)[]\>
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `dataA` | [*PostingEntry*](../interfaces/types.postingentry.md)[] | - |
+| `dataA` | [*Posting*](../interfaces/types.posting.md)[] | - |
 | `plB` | [*PostingList*](../interfaces/types.postinglist.md) | - |
 | `modify` | *boolean* | false |
 
-**Returns:** *Promise*<[*PostingEntry*](../interfaces/types.postingentry.md)[]\>
+**Returns:** *Promise*<[*Posting*](../interfaces/types.posting.md)[]\>
 
 Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md)
 
@@ -441,15 +441,15 @@ Defined in: [src/posting.ts:147](https://github.com/wholebuzz/search/blob/master
 
 ___
 
-### scoreEntry
+### scorePosting
 
-▸ **scoreEntry**(`entry`: [*PostingEntry*](../interfaces/types.postingentry.md), `idf`: *number*): *void*
+▸ **scorePosting**(`posting`: [*Posting*](../interfaces/types.posting.md), `idf`: *number*): *void*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `entry` | [*PostingEntry*](../interfaces/types.postingentry.md) |
+| `posting` | [*Posting*](../interfaces/types.posting.md) |
 | `idf` | *number* |
 
 **Returns:** *void*

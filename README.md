@@ -26,14 +26,14 @@ Scaffolded off [wink-bm25-text-search](https://www.npmjs.com/package/wink-bm25-t
 ```
 import { LocalFileSystem } from '@wholebuzz/fs/lib/fs'
 import { FilePostingListDatabase } from '@wholebuzz/search/lib/db'
-import { calcProximityEntryScores } from '@wholebuzz/search/lib/posting'
+import { calcProximityPostingScores } from '@wholebuzz/search/lib/posting'
 import { searchConfig, SearchEngine } from '@wholebuzz/search/lib/search'
 
 const fileSystem = new LocalFileSystem()
 const existingDirectory = '/tmp/search-test/data'
 const posting = new FilePostingListDatabase(fileSystem, existingDirectory, 2, {
   ...searchConfig,
-  scoreTermPair: calcProximityEntryScores,
+  scoreTermPair: calcProximityPostingScores,
 })
 await posting.init()
 const search = new SearchEngine(posting)

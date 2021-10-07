@@ -4,7 +4,7 @@ import * as assert from 'assert'
 import { FilePostingListDatabase } from './db'
 import { LevelDocIdDatabase, MemoryDocIdDatabase } from './docids'
 import { MemoryPostingListDatabase } from './posting'
-import { PostingEntryBlock } from './record'
+import { PostingBlock } from './record'
 import { searchConfig, SearchEngine } from './search'
 import { Event, recreateDirectory, rmrf } from './test.fixture'
 import { DocIdDatabase } from './types'
@@ -45,7 +45,7 @@ it('Should serialize posting lists correctly', async () => {
 
   for (const term of Object.keys(simple.posting.db)) {
     const orig = simple.posting.db[term].data
-    const block = PostingEntryBlock.createFrom(orig, term)
+    const block = PostingBlock.createFrom(orig, term)
     assert.equal(block.data.length, orig.length)
     for (let i = 0; i < orig.length; i++) {
       assert.equal(block.data[i].docid, orig[i].docid)

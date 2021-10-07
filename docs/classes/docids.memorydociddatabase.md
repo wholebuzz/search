@@ -4,11 +4,9 @@
 
 [docids](../modules/docids.md).MemoryDocIdDatabase
 
-## Hierarchy
+## Implements
 
-- [*DocIdDatabase*](types.dociddatabase.md)
-
-  ↳ **MemoryDocIdDatabase**
+- [*DocIdDatabase*](../interfaces/types.dociddatabase.md)
 
 ## Table of contents
 
@@ -37,8 +35,6 @@
 \+ **new MemoryDocIdDatabase**(): [*MemoryDocIdDatabase*](docids.memorydociddatabase.md)
 
 **Returns:** [*MemoryDocIdDatabase*](docids.memorydociddatabase.md)
-
-Inherited from: [DocIdDatabase](types.dociddatabase.md)
 
 ## Properties
 
@@ -79,7 +75,7 @@ Defined in: [src/docids.ts:9](https://github.com/wholebuzz/search/blob/master/sr
 
 **Returns:** *Promise*<bigint\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
 Defined in: [src/docids.ts:19](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L19)
 
@@ -91,7 +87,7 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
 Defined in: [src/docids.ts:11](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L11)
 
@@ -109,7 +105,7 @@ ___
 
 **Returns:** *Promise*<undefined \| [*DocStats*](../interfaces/types.docstats.md)\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
 Defined in: [src/docids.ts:15](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L15)
 
@@ -127,7 +123,7 @@ ___
 
 **Returns:** *Promise*<``null`` \| bigint\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
 Defined in: [src/docids.ts:25](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L25)
 
@@ -154,6 +150,6 @@ ___
 
 **Returns:** *Promise*<O[]\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
 Defined in: [src/docids.ts:37](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L37)

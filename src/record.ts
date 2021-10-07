@@ -1,7 +1,7 @@
 import { FileSystem } from '@wholebuzz/fs/lib/fs'
 import { RecordReader } from 'tfrecord-stream/lib/record_reader'
 import { RecordWriter } from 'tfrecord-stream/lib/record_writer'
-import { PostingEntry } from './types'
+import { Posting } from './types'
 
 export { RecordReader, RecordWriter }
 
@@ -21,8 +21,8 @@ export async function createBinaryRecordWriter(fileSystem: FileSystem, url: stri
   return RecordWriter.createFromStream((await fileSystem.openWritableFile(url)).finish())
 }
 
-export class PostingEntryView implements PostingEntry {
-  constructor(public block: PostingEntryBlock, public index: number) {}
+export class PostingView implements Posting {
+  constructor(public block: PostingBlock, public index: number) {}
 
   get docid() {
     return this.block.docIds[this.index]
@@ -56,10 +56,10 @@ export class PostingEntryView implements PostingEntry {
   }
 }
 
-export class PostingEntryBlock {
+export class PostingBlock {
   static headerLength = 2
 
-  static createFrom(input: PostingEntry[], term: string) {
+  static createFrom(input: Posting[], term: string) {
     const docIdSize = input.length * BigInt64Array.BYTES_PER_ELEMENT
     const docLenSize = input.length * Float32Array.BYTES_PER_ELEMENT
     const docScoreSize = input.length * Float32Array.BYTES_PER_ELEMENT
@@ -67,14 +67,14 @@ export class PostingEntryBlock {
     let sections = 0
     let sectionsLength = 0
     let occurrencesLength = 0
-    input.forEach((entry) => {
-      if (!sections) sections = entry.sections.length
-      if (entry.sections.length !== sections) throw new Error('Expected fixed number of sections')
-      sectionsLength += entry.sections.length
-      occurrencesLength += entry.occurrences.length
+    input.forEach((posting) => {
+      if (!sections) sections = posting.sections.length
+      if (posting.sections.length !== sections) throw new Error('Expected fixed number of sections')
+      sectionsLength += posting.sections.length
+      occurrencesLength += posting.occurrences.length
     })
     const buffer = new ArrayBuffer(
-      PostingEntryBlock.headerLength * Int32Array.BYTES_PER_ELEMENT +
+      PostingBlock.headerLength * Int32Array.BYTES_PER_ELEMENT +
         docIdSize +
         docLenSize +
         docScoreSize +
@@ -82,24 +82,24 @@ export class PostingEntryBlock {
         sectionsLength * Int32Array.BYTES_PER_ELEMENT +
         occurrencesLength * Int32Array.BYTES_PER_ELEMENT
     )
-    const header = new Int32Array(buffer, 0, PostingEntryBlock.headerLength)
+    const header = new Int32Array(buffer, 0, PostingBlock.headerLength)
     header[0] = input.length
     header[1] = sections
-    // console.log('PostingEntryBlock.createFrom', term, header[0], header[1])
-    const ret = new PostingEntryBlock(Buffer.from(buffer), term)
+    // console.log('PostingBlock.createFrom', term, header[0], header[1])
+    const ret = new PostingBlock(Buffer.from(buffer), term)
     if (ret.occurrences.length !== occurrencesLength) {
-      throw new Error('PostingEntryBlock corrupt')
+      throw new Error('PostingBlock corrupt')
     }
     let occurrencesEnd = 0
-    input.forEach((entry, i) => {
-      ret.docIds[i] = entry.docid as bigint
-      ret.docScores[i] = entry.score
-      ret.docLengths[i] = entry.doclen
-      for (let j = 0; j < sections; j++) ret.sections[i * sections + j] = entry.sections[j]
-      for (let j = 0; j < entry.occurrences.length; j++) {
-        ret.occurrences[occurrencesEnd + j] = entry.occurrences[j]
+    input.forEach((posting, i) => {
+      ret.docIds[i] = posting.docid as bigint
+      ret.docScores[i] = posting.score
+      ret.docLengths[i] = posting.doclen
+      for (let j = 0; j < sections; j++) ret.sections[i * sections + j] = posting.sections[j]
+      for (let j = 0; j < posting.occurrences.length; j++) {
+        ret.occurrences[occurrencesEnd + j] = posting.occurrences[j]
       }
-      occurrencesEnd += entry.occurrences.length
+      occurrencesEnd += posting.occurrences.length
       ret.docOccurrencesEnds[i] = occurrencesEnd
     })
     return ret
@@ -113,19 +113,19 @@ export class PostingEntryBlock {
   docOccurrencesEnds: Int32Array
   sections: Int32Array
   occurrences: Int32Array
-  data: PostingEntryView[]
+  data: PostingView[]
 
   constructor(public buffer: Buffer, _term: string) {
     /* console.log(
-      'PostingEntryBlock buffer',
+      'PostingBlock buffer',
       [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
     ) */
     let offset = buffer.byteOffset
-    const header = new Int32Array(buffer.buffer, offset, PostingEntryBlock.headerLength)
-    offset += PostingEntryBlock.headerLength * Int32Array.BYTES_PER_ELEMENT
+    const header = new Int32Array(buffer.buffer, offset, PostingBlock.headerLength)
+    offset += PostingBlock.headerLength * Int32Array.BYTES_PER_ELEMENT
     this.length = header[0]
     this.sectionsLength = header[1]
-    // console.log('PostingEntryBlock', _term, header[0], header[1])
+    // console.log('PostingBlock', _term, header[0], header[1])
     this.docIds = new BigInt64Array(buffer.buffer, offset, this.length)
     offset += this.length * BigInt64Array.BYTES_PER_ELEMENT
     this.docScores = new Float32Array(buffer.buffer, offset, this.length)
@@ -141,6 +141,6 @@ export class PostingEntryBlock {
       offset,
       (buffer.byteLength + buffer.byteOffset - offset) / Int32Array.BYTES_PER_ELEMENT
     )
-    this.data = Array.from({ length: this.length }, (_, i) => new PostingEntryView(this, i))
+    this.data = Array.from({ length: this.length }, (_, i) => new PostingView(this, i))
   }
 }

@@ -9,8 +9,8 @@
 ### Properties
 
 - [block](heap.heapitem.md#block)
-- [entry](heap.heapitem.md#entry)
 - [offset](heap.heapitem.md#offset)
+- [posting](heap.heapitem.md#posting)
 - [reader](heap.heapitem.md#reader)
 - [term](heap.heapitem.md#term)
 
@@ -18,17 +18,9 @@
 
 ### block
 
-• **block**: [*PostingEntry*](types.postingentry.md)[]
+• **block**: [*Posting*](types.posting.md)[]
 
 Defined in: [src/heap.ts:11](https://github.com/wholebuzz/search/blob/master/src/heap.ts#L11)
-
-___
-
-### entry
-
-• **entry**: [*PostingEntry*](types.postingentry.md)
-
-Defined in: [src/heap.ts:10](https://github.com/wholebuzz/search/blob/master/src/heap.ts#L10)
 
 ___
 
@@ -37,6 +29,14 @@ ___
 • **offset**: *number*
 
 Defined in: [src/heap.ts:9](https://github.com/wholebuzz/search/blob/master/src/heap.ts#L9)
+
+___
+
+### posting
+
+• **posting**: [*Posting*](types.posting.md)
+
+Defined in: [src/heap.ts:10](https://github.com/wholebuzz/search/blob/master/src/heap.ts#L10)
 
 ___
 

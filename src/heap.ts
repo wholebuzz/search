@@ -1,24 +1,24 @@
 import MinHeap from 'mnemonist/heap'
-import { PostingEntryBlock, RecordReader } from './record'
-import { HasDocId, PostingEntry } from './types'
+import { PostingBlock, RecordReader } from './record'
+import { HasDocId, Posting } from './types'
 
 export { MinHeap }
 
 export interface HeapItem {
   term: string
   offset: number
-  entry: PostingEntry
-  block: PostingEntry[]
+  posting: Posting
+  block: Posting[]
   reader?: RecordReader | null
 }
 
 export const compareHeapItem = (itemA: HeapItem, itemB: HeapItem) =>
-  compareDocId(itemA.entry, itemB.entry)
+  compareDocId(itemA.posting, itemB.posting)
 
 export const incrementHeapItem = (heap: MinHeap<HeapItem>, item: HeapItem) => {
   item.offset++
   if (item.offset < item.block.length) {
-    item.entry = item.block[item.offset]
+    item.posting = item.block[item.offset]
     heap.replace(item)
   } else {
     if (item.reader) return false
@@ -33,8 +33,8 @@ export const reloadHeapItem = (
   nextRecord: Uint8Array | null
 ) => {
   if (nextRecord) {
-    item.block = new PostingEntryBlock(Buffer.from(nextRecord), item.term).data
-    item.entry = item.block[0]
+    item.block = new PostingBlock(Buffer.from(nextRecord), item.term).data
+    item.posting = item.block[0]
     item.offset = 0
   } else {
     heap.pop()
@@ -44,21 +44,21 @@ export const reloadHeapItem = (
 export const addHeapItemList = (
   target: HeapItem[],
   term: string | undefined,
-  pl: { data: PostingEntry[] } | undefined | null,
+  pl: { data: Posting[] } | undefined | null,
   reader?: RecordReader | null
 ) => {
   if (pl && pl.data && pl.data.length > 0) {
-    target.push({ block: pl.data, entry: pl.data[0], offset: 0, reader, term: term! })
+    target.push({ block: pl.data, posting: pl.data[0], offset: 0, reader, term: term! })
   }
 }
 
 export const intersectHeaps = async (
   heapA: MinHeap<HeapItem>,
   heapB: MinHeap<HeapItem>,
-  scoreF: (entryA: PostingEntry, entryB: PostingEntry, modify: boolean) => PostingEntry,
+  scoreF: (postingA: Posting, postingB: Posting, modify: boolean) => Posting,
   modify = false
 ) => {
-  const ret: PostingEntry[] = []
+  const ret: Posting[] = []
   while (true) {
     const itemA = heapA.peek()
     const itemB = heapB.peek()
@@ -69,7 +69,7 @@ export const intersectHeaps = async (
     let incrB = cmp > 0
     if (!incrA && !incrB) {
       incrA = incrB = true
-      ret.push(scoreF(itemA.entry, itemB.entry, modify))
+      ret.push(scoreF(itemA.posting, itemB.posting, modify))
     }
     if (incrA) {
       if (!incrementHeapItem(heapA, itemA)) {
@@ -86,11 +86,11 @@ export const intersectHeaps = async (
 }
 
 export const copyHeapData = async (heap: MinHeap<HeapItem>) => {
-  const ret: PostingEntry[] = []
+  const ret: Posting[] = []
   while (true) {
     const item = heap.peek()
     if (!item) break
-    ret.push({ docid: item.entry.docid, score: item.entry.score } as any)
+    ret.push({ docid: item.posting.docid, score: item.posting.score } as any)
     if (!incrementHeapItem(heap, item)) {
       reloadHeapItem(heap, item, await item.reader!.readRecord())
     }

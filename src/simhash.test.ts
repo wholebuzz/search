@@ -4,7 +4,7 @@ import * as assert from 'assert'
 import _ from 'lodash'
 import { FilePostingListDatabase } from './db'
 import { getIDFMap, getTFIDF, newIDFMap, simhashIDF, tokenIdHash } from './idf'
-import { addPostingEntryScores, MemoryPostingListDatabase } from './posting'
+import { addPostingScores, MemoryPostingListDatabase } from './posting'
 import { searchConfig, SearchEngine } from './search'
 import { Event, recreateDirectory, sleep } from './test.fixture'
 import { tokenizeForSearch } from './tokens'
@@ -26,7 +26,7 @@ it('Should hash the same with IDFMap and SearchEngine', async () => {
     bm25Params: { b: 0.75, k: 1, k1: 1.2 },
     fldWeights: { author: 1, body: 1, title: 1 },
     freqPrecision: 4,
-    scoreTermPair: addPostingEntryScores,
+    scoreTermPair: addPostingScores,
   }
   memoryPl.posting.defineConfig(config)
   diskPl.posting.defineConfig(config)

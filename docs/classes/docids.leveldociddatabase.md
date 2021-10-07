@@ -4,11 +4,9 @@
 
 [docids](../modules/docids.md).LevelDocIdDatabase
 
-## Hierarchy
+## Implements
 
-- [*DocIdDatabase*](types.dociddatabase.md)
-
-  ↳ **LevelDocIdDatabase**
+- [*DocIdDatabase*](../interfaces/types.dociddatabase.md)
 
 ## Table of contents
 
@@ -45,8 +43,6 @@
 | `path` | *string* |
 
 **Returns:** [*LevelDocIdDatabase*](docids.leveldociddatabase.md)
-
-Overrides: [DocIdDatabase](types.dociddatabase.md)
 
 Defined in: [src/docids.ts:51](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L51)
 
@@ -103,9 +99,9 @@ ___
 
 **Returns:** *Promise*<bigint\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
-Defined in: [src/docids.ts:74](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L74)
+Defined in: [src/docids.ts:73](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L73)
 
 ___
 
@@ -115,9 +111,9 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
-Defined in: [src/docids.ts:60](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L60)
+Defined in: [src/docids.ts:59](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L59)
 
 ___
 
@@ -133,9 +129,9 @@ ___
 
 **Returns:** *Promise*<any\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
-Defined in: [src/docids.ts:66](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L66)
+Defined in: [src/docids.ts:65](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L65)
 
 ___
 
@@ -151,9 +147,9 @@ ___
 
 **Returns:** *Promise*<any\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
-Defined in: [src/docids.ts:83](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L83)
+Defined in: [src/docids.ts:82](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L82)
 
 ___
 
@@ -178,6 +174,6 @@ ___
 
 **Returns:** *Promise*<O[]\>
 
-Overrides: [DocIdDatabase](types.dociddatabase.md)
+Implementation of: [DocIdDatabase](../interfaces/types.dociddatabase.md)
 
-Defined in: [src/docids.ts:94](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L94)
+Defined in: [src/docids.ts:93](https://github.com/wholebuzz/search/blob/master/src/docids.ts#L93)

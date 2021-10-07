@@ -1,9 +1,9 @@
-import { addPostingEntryScores } from './posting'
+import { addPostingScores } from './posting'
 import { tokenizeForSearch } from './tokens'
 import {
   DocStats,
   HasScore,
-  PostingEntry,
+  Posting,
   PostingList,
   PostingListDatabase,
   SearchInterface,
@@ -21,7 +21,7 @@ export const searchConfig: Record<string, any> = {
     title: 2,
   },
   ovFldNames: [],
-  scoreTermPair: addPostingEntryScores,
+  scoreTermPair: addPostingScores,
 }
 
 export class SearchEngine implements SearchInterface {
@@ -47,12 +47,12 @@ export class SearchEngine implements SearchInterface {
     if (maxResults && ret.length >= maxResults) ret = ret.slice(0, maxResults)
 
     if (!this.posting.docids) {
-      return ret.map((x: PostingEntry): [string, number] => [x.docid.toString(), x.score])
+      return ret.map((x: Posting): [string, number] => [x.docid.toString(), x.score])
     } else {
       return this.posting.docids.resolve(
         ret,
-        (x: PostingEntry) => x.docid as bigint,
-        (x: PostingEntry, y: DocStats): [string, number] => [y.guid, x.score]
+        (x: Posting) => x.docid as bigint,
+        (x: Posting, y: DocStats): [string, number] => [y.guid, x.score]
       )
     }
   }

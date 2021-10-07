@@ -33,4 +33,4 @@
 
 **Returns:** X
 
-Defined in: [src/db.ts:259](https://github.com/wholebuzz/search/blob/master/src/db.ts#L259)
+Defined in: [src/db.ts:255](https://github.com/wholebuzz/search/blob/master/src/db.ts#L255)

@@ -16,8 +16,8 @@
 
 ### Functions
 
-- [addPostingEntryScores](posting.md#addpostingentryscores)
-- [calcProximityEntryScores](posting.md#calcproximityentryscores)
+- [addPostingScores](posting.md#addpostingscores)
+- [calcProximityPostingScores](posting.md#calcproximitypostingscores)
 
 ## Variables
 
@@ -45,36 +45,36 @@ Defined in: [src/posting.ts:16](https://github.com/wholebuzz/search/blob/master/
 
 ## Functions
 
-### addPostingEntryScores
+### addPostingScores
 
-▸ **addPostingEntryScores**(`entryA`: [*PostingEntry*](../interfaces/types.postingentry.md), `entryB`: [*PostingEntry*](../interfaces/types.postingentry.md), `modify?`: *boolean*): [*PostingEntry*](../interfaces/types.postingentry.md)
+▸ **addPostingScores**(`postingA`: [*Posting*](../interfaces/types.posting.md), `postingB`: [*Posting*](../interfaces/types.posting.md), `modify?`: *boolean*): [*Posting*](../interfaces/types.posting.md)
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `entryA` | [*PostingEntry*](../interfaces/types.postingentry.md) | - |
-| `entryB` | [*PostingEntry*](../interfaces/types.postingentry.md) | - |
+| `postingA` | [*Posting*](../interfaces/types.posting.md) | - |
+| `postingB` | [*Posting*](../interfaces/types.posting.md) | - |
 | `modify` | *boolean* | false |
 
-**Returns:** [*PostingEntry*](../interfaces/types.postingentry.md)
+**Returns:** [*Posting*](../interfaces/types.posting.md)
 
-Defined in: [src/posting.ts:220](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L220)
+Defined in: [src/posting.ts:216](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L216)
 
 ___
 
-### calcProximityEntryScores
+### calcProximityPostingScores
 
-▸ **calcProximityEntryScores**(`entryA`: [*PostingEntry*](../interfaces/types.postingentry.md), `entryB`: [*PostingEntry*](../interfaces/types.postingentry.md), `modify?`: *boolean*): [*PostingEntry*](../interfaces/types.postingentry.md)
+▸ **calcProximityPostingScores**(`postingA`: [*Posting*](../interfaces/types.posting.md), `postingB`: [*Posting*](../interfaces/types.posting.md), `modify?`: *boolean*): [*Posting*](../interfaces/types.posting.md)
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `entryA` | [*PostingEntry*](../interfaces/types.postingentry.md) | - |
-| `entryB` | [*PostingEntry*](../interfaces/types.postingentry.md) | - |
+| `postingA` | [*Posting*](../interfaces/types.posting.md) | - |
+| `postingB` | [*Posting*](../interfaces/types.posting.md) | - |
 | `modify` | *boolean* | false |
 
-**Returns:** [*PostingEntry*](../interfaces/types.postingentry.md)
+**Returns:** [*Posting*](../interfaces/types.posting.md)
 
-Defined in: [src/posting.ts:230](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L230)
+Defined in: [src/posting.ts:222](https://github.com/wholebuzz/search/blob/master/src/posting.ts#L222)

@@ -42,7 +42,7 @@
 
 **Returns:** *Promise*<number\>
 
-Defined in: [src/types.ts:78](https://github.com/wholebuzz/search/blob/master/src/types.ts#L78)
+Defined in: [src/types.ts:64](https://github.com/wholebuzz/search/blob/master/src/types.ts#L64)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [src/types.ts:80](https://github.com/wholebuzz/search/blob/master/src/types.ts#L80)
+Defined in: [src/types.ts:66](https://github.com/wholebuzz/search/blob/master/src/types.ts#L66)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 **Returns:** *boolean*
 
-Defined in: [src/types.ts:75](https://github.com/wholebuzz/search/blob/master/src/types.ts#L75)
+Defined in: [src/types.ts:61](https://github.com/wholebuzz/search/blob/master/src/types.ts#L61)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 **Returns:** *number*
 
-Defined in: [src/types.ts:77](https://github.com/wholebuzz/search/blob/master/src/types.ts#L77)
+Defined in: [src/types.ts:63](https://github.com/wholebuzz/search/blob/master/src/types.ts#L63)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 **Returns:** *Record*<string, any\>
 
-Defined in: [src/types.ts:84](https://github.com/wholebuzz/search/blob/master/src/types.ts#L84)
+Defined in: [src/types.ts:70](https://github.com/wholebuzz/search/blob/master/src/types.ts#L70)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 **Returns:** *Record*<string, [*Document*](types.document.md)\>
 
-Defined in: [src/types.ts:81](https://github.com/wholebuzz/search/blob/master/src/types.ts#L81)
+Defined in: [src/types.ts:67](https://github.com/wholebuzz/search/blob/master/src/types.ts#L67)
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 **Returns:** *number*[]
 
-Defined in: [src/types.ts:83](https://github.com/wholebuzz/search/blob/master/src/types.ts#L83)
+Defined in: [src/types.ts:69](https://github.com/wholebuzz/search/blob/master/src/types.ts#L69)
 
 ___
 
@@ -131,7 +131,7 @@ ___
 
 **Returns:** *Record*<string, number\>
 
-Defined in: [src/types.ts:82](https://github.com/wholebuzz/search/blob/master/src/types.ts#L82)
+Defined in: [src/types.ts:68](https://github.com/wholebuzz/search/blob/master/src/types.ts#L68)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 **Returns:** *number*
 
-Defined in: [src/types.ts:85](https://github.com/wholebuzz/search/blob/master/src/types.ts#L85)
+Defined in: [src/types.ts:71](https://github.com/wholebuzz/search/blob/master/src/types.ts#L71)
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 **Returns:** *number*
 
-Defined in: [src/types.ts:86](https://github.com/wholebuzz/search/blob/master/src/types.ts#L86)
+Defined in: [src/types.ts:72](https://github.com/wholebuzz/search/blob/master/src/types.ts#L72)
 
 ___
 
@@ -168,4 +168,4 @@ ___
 
 **Returns:** *Promise*<number\>
 
-Defined in: [src/types.ts:79](https://github.com/wholebuzz/search/blob/master/src/types.ts#L79)
+Defined in: [src/types.ts:65](https://github.com/wholebuzz/search/blob/master/src/types.ts#L65)

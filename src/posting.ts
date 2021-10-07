@@ -6,7 +6,7 @@ import {
   Document,
   IDFMap,
   IdValue,
-  PostingEntry,
+  Posting,
   PostingList,
   PostingListDatabase,
 } from './types'
@@ -60,8 +60,8 @@ export class MemoryPostingListDatabase implements PostingListDatabase {
   async consolidate(_precision?: number): Promise<boolean> {
     this.lexicon.minIDF = Number.MAX_SAFE_INTEGER
     this.lexicon.avgCorpusLength = this.lexicon.totalCorpusLength / this.lexicon.totalDocs
-    for (const [_term, entry] of Object.entries(this.db)) {
-      await this.consolidateIndex(entry)
+    for (const [_term, posting] of Object.entries(this.db)) {
+      await this.consolidateIndex(posting)
     }
     return true
   }
@@ -72,17 +72,17 @@ export class MemoryPostingListDatabase implements PostingListDatabase {
     const n = index.data.length + (index.fileEntries ?? 0)
     const v = (index.value = Math.log((this.lexicon.totalDocs - n + 0.5) / (n + 0.5) + k))
     if (v < this.lexicon.minIDF) this.lexicon.minIDF = v
-    for (const entry of index.data) this.scoreEntry(entry, index.value)
+    for (const posting of index.data) this.scorePosting(posting, index.value)
   }
 
-  scoreEntry(entry: PostingEntry, idf: number) {
+  scorePosting(posting: Posting, idf: number) {
     const { b, k1 } = this.lexicon.config.bm25Params
-    const freq = this.getFreq(entry.occurrences, entry.sections)
-    const normalizationFactor = 1 - b + b * (entry.doclen / this.lexicon.avgCorpusLength)
-    entry.score = Math.abs((freq * (k1 + 1)) / (k1 * normalizationFactor + freq)) * idf
+    const freq = this.getFreq(posting.occurrences, posting.sections)
+    const normalizationFactor = 1 - b + b * (posting.doclen / this.lexicon.avgCorpusLength)
+    posting.score = Math.abs((freq * (k1 + 1)) / (k1 * normalizationFactor + freq)) * idf
     if (this.lexicon.config.freqPrecision) {
-      entry.score =
-        Math.sign(freq) * parseFloat(entry.score.toFixed(this.lexicon.config.freqPrecision))
+      posting.score =
+        Math.sign(freq) * parseFloat(posting.score.toFixed(this.lexicon.config.freqPrecision))
     }
   }
 
@@ -133,9 +133,9 @@ export class MemoryPostingListDatabase implements PostingListDatabase {
           this.db[term] ??
           (this.db[term] = { data: [], id: this.termId++, term, value: this.lexicon.minIDF })
         const emptyPl = pl.data.length === 0
-        const entry = { docid: id, doclen, occurrences: uniqueTokens[term], score: 0, sections }
-        if (this.lexicon.avgCorpusLength) this.scoreEntry(entry, pl.value)
-        sorted.add(pl.data, entry, compareDocId)
+        const posting = { docid: id, doclen, occurrences: uniqueTokens[term], score: 0, sections }
+        if (this.lexicon.avgCorpusLength) this.scorePosting(posting, pl.value)
+        sorted.add(pl.data, posting, compareDocId)
         if (emptyPl) this.onNewPostingListData(pl)
       }
     } catch (err) {
@@ -202,52 +202,40 @@ export class MemoryPostingListDatabase implements PostingListDatabase {
     return this.lexicon.totalDocs
   }
 
-  async intersect(plA: PostingList, plB?: PostingList): Promise<PostingEntry[]> {
+  async intersect(plA: PostingList, plB?: PostingList): Promise<Posting[]> {
     return plB ? this.intersectNext(plA.data, plB) : plA.data
   }
 
-  async intersectNext(
-    dataA: PostingEntry[],
-    plB: PostingList,
-    modify = false
-  ): Promise<PostingEntry[]> {
-    return intersect(dataA, plB.data, compareDocId, (x: PostingEntry, y: PostingEntry) =>
-      addPostingEntryScores(x, y, modify)
+  async intersectNext(dataA: Posting[], plB: PostingList, modify = false): Promise<Posting[]> {
+    return intersect(dataA, plB.data, compareDocId, (x: Posting, y: Posting) =>
+      addPostingScores(x, y, modify)
     )
   }
 }
 
-export function addPostingEntryScores(
-  entryA: PostingEntry,
-  entryB: PostingEntry,
-  modify = false
-): PostingEntry {
-  if (!modify) return { docid: entryA.docid, score: entryA.score + entryB.score } as any
-  entryA.score += entryB.score
-  return entryA
+export function addPostingScores(postingA: Posting, postingB: Posting, modify = false): Posting {
+  if (!modify) return { docid: postingA.docid, score: postingA.score + postingB.score } as any
+  postingA.score += postingB.score
+  return postingA
 }
 
-export function calcProximityEntryScores(
-  entryA: PostingEntry,
-  entryB: PostingEntry,
-  modify = false
-) {
+export function calcProximityPostingScores(postingA: Posting, postingB: Posting, modify = false) {
   let proximityPenalty = Number.MAX_SAFE_INTEGER
-  merge(entryA.occurrences, entryB.occurrences, (x: number, y: number) => {
+  merge(postingA.occurrences, postingB.occurrences, (x: number, y: number) => {
     proximityPenalty = Math.min(proximityPenalty, Math.abs(x - y))
     return x - y
   })
 
   if (!modify) {
     return {
-      docid: entryA.docid,
-      doclen: entryA.doclen,
-      sections: entryA.sections,
-      score: (entryA.score + entryB.score) / proximityPenalty,
-      occurrences: Array.from(entryB.occurrences),
+      docid: postingA.docid,
+      doclen: postingA.doclen,
+      sections: postingA.sections,
+      score: (postingA.score + postingB.score) / proximityPenalty,
+      occurrences: Array.from(postingB.occurrences),
     }
   }
-  entryA.score += entryB.score / proximityPenalty
-  entryA.occurrences = entryB.occurrences
-  return entryA
+  postingA.score += postingB.score / proximityPenalty
+  postingA.occurrences = postingB.occurrences
+  return postingA
 }
