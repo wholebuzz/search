@@ -23,7 +23,7 @@
 
 • **id**: *number*
 
-Defined in: [src/types.ts:18](https://github.com/wholebuzz/search/blob/master/src/types.ts#L18)
+Defined in: [src/types.ts:27](https://github.com/wholebuzz/search/blob/master/src/types.ts#L27)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 • **value**: *number*
 
-Defined in: [src/types.ts:19](https://github.com/wholebuzz/search/blob/master/src/types.ts#L19)
+Defined in: [src/types.ts:28](https://github.com/wholebuzz/search/blob/master/src/types.ts#L28)

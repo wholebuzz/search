@@ -32,7 +32,7 @@
 
 Inherited from: [HasDocId](types.hasdocid.md).[docid](types.hasdocid.md#docid)
 
-Defined in: [src/types.ts:2](https://github.com/wholebuzz/search/blob/master/src/types.ts#L2)
+Defined in: [src/types.ts:11](https://github.com/wholebuzz/search/blob/master/src/types.ts#L11)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 • **doclen**: *number*
 
-Defined in: [src/types.ts:29](https://github.com/wholebuzz/search/blob/master/src/types.ts#L29)
+Defined in: [src/types.ts:33](https://github.com/wholebuzz/search/blob/master/src/types.ts#L33)
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **occurrences**: *ArrayLike*<number\>
 
-Defined in: [src/types.ts:31](https://github.com/wholebuzz/search/blob/master/src/types.ts#L31)
+Defined in: [src/types.ts:35](https://github.com/wholebuzz/search/blob/master/src/types.ts#L35)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **score**: *number*
 
-Defined in: [src/types.ts:28](https://github.com/wholebuzz/search/blob/master/src/types.ts#L28)
+Defined in: [src/types.ts:32](https://github.com/wholebuzz/search/blob/master/src/types.ts#L32)
 
 ___
 
@@ -64,4 +64,4 @@ ___
 
 • **sections**: *ArrayLike*<number\>
 
-Defined in: [src/types.ts:30](https://github.com/wholebuzz/search/blob/master/src/types.ts#L30)
+Defined in: [src/types.ts:34](https://github.com/wholebuzz/search/blob/master/src/types.ts#L34)

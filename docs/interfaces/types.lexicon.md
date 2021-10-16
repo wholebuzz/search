@@ -22,7 +22,7 @@
 
 • **avgCorpusLength**: *number*
 
-Defined in: [src/types.ts:84](https://github.com/wholebuzz/search/blob/master/src/types.ts#L84)
+Defined in: [src/types.ts:88](https://github.com/wholebuzz/search/blob/master/src/types.ts#L88)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 • **config**: *Record*<string, any\>
 
-Defined in: [src/types.ts:81](https://github.com/wholebuzz/search/blob/master/src/types.ts#L81)
+Defined in: [src/types.ts:85](https://github.com/wholebuzz/search/blob/master/src/types.ts#L85)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **idf**: *Record*<string, [*IdValue*](types.idvalue.md)\>
 
-Defined in: [src/types.ts:82](https://github.com/wholebuzz/search/blob/master/src/types.ts#L82)
+Defined in: [src/types.ts:86](https://github.com/wholebuzz/search/blob/master/src/types.ts#L86)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **minIDF**: *number*
 
-Defined in: [src/types.ts:83](https://github.com/wholebuzz/search/blob/master/src/types.ts#L83)
+Defined in: [src/types.ts:87](https://github.com/wholebuzz/search/blob/master/src/types.ts#L87)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • **totalCorpusLength**: *number*
 
-Defined in: [src/types.ts:85](https://github.com/wholebuzz/search/blob/master/src/types.ts#L85)
+Defined in: [src/types.ts:89](https://github.com/wholebuzz/search/blob/master/src/types.ts#L89)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 • **totalDocs**: *number*
 
-Defined in: [src/types.ts:86](https://github.com/wholebuzz/search/blob/master/src/types.ts#L86)
+Defined in: [src/types.ts:90](https://github.com/wholebuzz/search/blob/master/src/types.ts#L90)
 
 ___
 
@@ -70,4 +70,4 @@ ___
 
 • `Optional` **version**: Date
 
-Defined in: [src/types.ts:87](https://github.com/wholebuzz/search/blob/master/src/types.ts#L87)
+Defined in: [src/types.ts:91](https://github.com/wholebuzz/search/blob/master/src/types.ts#L91)

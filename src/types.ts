@@ -1,3 +1,12 @@
+export type ItemLabel = string
+export type ItemEmbedding = number[]
+export type ItemFingerprint = bigint
+export type GetItemLabel<Item> = (item: Item) => ItemLabel
+export type GetItemEmbedding<Item> = (item: Item) => ItemEmbedding
+export type SetItemEmbedding<Item> = (item: Item, embedding?: ItemEmbedding) => Item
+export type GetItemFingerprint<Item> = (item: Item) => ItemFingerprint
+export type SetItemFingerprint<Item> = (item: Item, fingerprint?: ItemFingerprint) => Item
+
 export interface HasDocId {
   docid: string | bigint
 }
@@ -17,11 +26,6 @@ export interface HasScore {
 export interface IdValue {
   id: number
   value: number
-}
-
-export interface TextDataset<Item> {
-  getItemText: (x: Item) => string
-  items: Item[]
 }
 
 export interface Posting extends HasDocId {
@@ -86,6 +90,37 @@ export interface Lexicon {
   totalDocs: number
   version?: Date
 }
+
+export interface Dataset<Item> {
+  items: Item[]
+}
+
+export interface LabeledDataset<Item> extends Dataset<Item> {
+  getItemLabel: GetItemLabel<Item>
+  getItemDebug?: (item: Item) => string
+}
+
+export interface EmbeddedLabeledDataset<Item> extends LabeledDataset<Item> {
+  getItemEmbedding: GetItemEmbedding<Item>
+  setItemEmbedding: SetItemEmbedding<Item>
+}
+
+export interface FingerprintedLabeledDataset<Item> extends LabeledDataset<Item> {
+  getItemFingerprint: GetItemFingerprint<Item>
+  setItemFingerprint: SetItemFingerprint<Item>
+}
+
+export interface TextDataset<Item> extends Dataset<Item> {
+  getItemText: (x: Item) => string
+}
+
+export interface LabeledTextDataset<Item> extends TextDataset<Item>, LabeledDataset<Item> {}
+
+export interface LexiconDataset<Item> extends TextDataset<Item> {
+  lexicon: Lexicon
+}
+
+export interface LabeledLexiconDataset<Item> extends LexiconDataset<Item>, LabeledDataset<Item> {}
 
 export interface PostingListDatabase extends DocumentDatabase {
   db: Record<string, PostingList>

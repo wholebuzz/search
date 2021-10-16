@@ -22,4 +22,4 @@
 
 • **docid**: *string* \| *bigint*
 
-Defined in: [src/types.ts:2](https://github.com/wholebuzz/search/blob/master/src/types.ts#L2)
+Defined in: [src/types.ts:11](https://github.com/wholebuzz/search/blob/master/src/types.ts#L11)

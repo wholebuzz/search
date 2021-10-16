@@ -34,7 +34,7 @@
 
 **Returns:** *Promise*<bigint\>
 
-Defined in: [src/types.ts:55](https://github.com/wholebuzz/search/blob/master/src/types.ts#L55)
+Defined in: [src/types.ts:59](https://github.com/wholebuzz/search/blob/master/src/types.ts#L59)
 
 ___
 
@@ -44,7 +44,7 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Defined in: [src/types.ts:62](https://github.com/wholebuzz/search/blob/master/src/types.ts#L62)
+Defined in: [src/types.ts:66](https://github.com/wholebuzz/search/blob/master/src/types.ts#L66)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 **Returns:** *Promise*<undefined \| [*DocStats*](types.docstats.md)\>
 
-Defined in: [src/types.ts:54](https://github.com/wholebuzz/search/blob/master/src/types.ts#L54)
+Defined in: [src/types.ts:58](https://github.com/wholebuzz/search/blob/master/src/types.ts#L58)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 **Returns:** *Promise*<``null`` \| bigint\>
 
-Defined in: [src/types.ts:56](https://github.com/wholebuzz/search/blob/master/src/types.ts#L56)
+Defined in: [src/types.ts:60](https://github.com/wholebuzz/search/blob/master/src/types.ts#L60)
 
 ___
 
@@ -101,4 +101,4 @@ ___
 
 **Returns:** *Promise*<O[]\>
 
-Defined in: [src/types.ts:57](https://github.com/wholebuzz/search/blob/master/src/types.ts#L57)
+Defined in: [src/types.ts:61](https://github.com/wholebuzz/search/blob/master/src/types.ts#L61)

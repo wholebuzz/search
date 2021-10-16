@@ -17,7 +17,7 @@
 
 • **freq**: *Record*<string, number\>
 
-Defined in: [src/types.ts:42](https://github.com/wholebuzz/search/blob/master/src/types.ts#L42)
+Defined in: [src/types.ts:46](https://github.com/wholebuzz/search/blob/master/src/types.ts#L46)
 
 ___
 
@@ -25,4 +25,4 @@ ___
 
 • **length**: *number*
 
-Defined in: [src/types.ts:43](https://github.com/wholebuzz/search/blob/master/src/types.ts#L43)
+Defined in: [src/types.ts:47](https://github.com/wholebuzz/search/blob/master/src/types.ts#L47)

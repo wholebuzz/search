@@ -16,4 +16,4 @@
 
 • **embedding**: *number*[]
 
-Defined in: [src/types.ts:6](https://github.com/wholebuzz/search/blob/master/src/types.ts#L6)
+Defined in: [src/types.ts:15](https://github.com/wholebuzz/search/blob/master/src/types.ts#L15)

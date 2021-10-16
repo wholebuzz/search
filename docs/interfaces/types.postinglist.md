@@ -27,7 +27,7 @@
 
 • **data**: [*Posting*](types.posting.md)[]
 
-Defined in: [src/types.ts:36](https://github.com/wholebuzz/search/blob/master/src/types.ts#L36)
+Defined in: [src/types.ts:40](https://github.com/wholebuzz/search/blob/master/src/types.ts#L40)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 • `Optional` **fileEntries**: *number*
 
-Defined in: [src/types.ts:37](https://github.com/wholebuzz/search/blob/master/src/types.ts#L37)
+Defined in: [src/types.ts:41](https://github.com/wholebuzz/search/blob/master/src/types.ts#L41)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 • `Optional` **fileInode**: *number*
 
-Defined in: [src/types.ts:38](https://github.com/wholebuzz/search/blob/master/src/types.ts#L38)
+Defined in: [src/types.ts:42](https://github.com/wholebuzz/search/blob/master/src/types.ts#L42)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 Inherited from: [IdValue](types.idvalue.md).[id](types.idvalue.md#id)
 
-Defined in: [src/types.ts:18](https://github.com/wholebuzz/search/blob/master/src/types.ts#L18)
+Defined in: [src/types.ts:27](https://github.com/wholebuzz/search/blob/master/src/types.ts#L27)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 • **term**: *string*
 
-Defined in: [src/types.ts:35](https://github.com/wholebuzz/search/blob/master/src/types.ts#L35)
+Defined in: [src/types.ts:39](https://github.com/wholebuzz/search/blob/master/src/types.ts#L39)
 
 ___
 
@@ -71,4 +71,4 @@ ___
 
 Inherited from: [IdValue](types.idvalue.md).[value](types.idvalue.md#value)
 
-Defined in: [src/types.ts:19](https://github.com/wholebuzz/search/blob/master/src/types.ts#L19)
+Defined in: [src/types.ts:28](https://github.com/wholebuzz/search/blob/master/src/types.ts#L28)

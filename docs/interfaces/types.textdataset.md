@@ -10,6 +10,16 @@
 | :------ |
 | `Item` |
 
+## Hierarchy
+
+- [*Dataset*](types.dataset.md)<Item\>
+
+  ↳ **TextDataset**
+
+  ↳↳ [*LabeledTextDataset*](types.labeledtextdataset.md)
+
+  ↳↳ [*LexiconDataset*](types.lexicondataset.md)
+
 ## Table of contents
 
 ### Properties
@@ -35,7 +45,7 @@
 
 **Returns:** *string*
 
-Defined in: [src/types.ts:23](https://github.com/wholebuzz/search/blob/master/src/types.ts#L23)
+Defined in: [src/types.ts:114](https://github.com/wholebuzz/search/blob/master/src/types.ts#L114)
 
 ___
 
@@ -43,4 +53,6 @@ ___
 
 • **items**: Item[]
 
-Defined in: [src/types.ts:24](https://github.com/wholebuzz/search/blob/master/src/types.ts#L24)
+Inherited from: [Dataset](types.dataset.md).[items](types.dataset.md#items)
+
+Defined in: [src/types.ts:95](https://github.com/wholebuzz/search/blob/master/src/types.ts#L95)

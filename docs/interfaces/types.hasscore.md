@@ -16,4 +16,4 @@
 
 • **score**: *number*
 
-Defined in: [src/types.ts:14](https://github.com/wholebuzz/search/blob/master/src/types.ts#L14)
+Defined in: [src/types.ts:23](https://github.com/wholebuzz/search/blob/master/src/types.ts#L23)
