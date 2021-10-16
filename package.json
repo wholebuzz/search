@@ -1,6 +1,6 @@
 {
   "name": "@wholebuzz/search",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Persistent inverted index and BM25 search engine with proximity penalty.",
   "author": "wholebuzz",
   "license": "Apache-2.0",

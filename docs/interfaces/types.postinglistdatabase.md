@@ -46,7 +46,7 @@
 
 • **db**: *Record*<string, [*PostingList*](types.postinglist.md)\>
 
-Defined in: [src/types.ts:126](https://github.com/wholebuzz/search/blob/master/src/types.ts#L126)
+Defined in: [src/types.ts:142](https://github.com/wholebuzz/search/blob/master/src/types.ts#L142)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 • `Optional` **docids**: [*DocIdDatabase*](types.dociddatabase.md)
 
-Defined in: [src/types.ts:128](https://github.com/wholebuzz/search/blob/master/src/types.ts#L128)
+Defined in: [src/types.ts:144](https://github.com/wholebuzz/search/blob/master/src/types.ts#L144)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 • **lexicon**: [*Lexicon*](types.lexicon.md)
 
-Defined in: [src/types.ts:127](https://github.com/wholebuzz/search/blob/master/src/types.ts#L127)
+Defined in: [src/types.ts:143](https://github.com/wholebuzz/search/blob/master/src/types.ts#L143)
 
 ## Methods
 
@@ -219,7 +219,7 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Defined in: [src/types.ts:130](https://github.com/wholebuzz/search/blob/master/src/types.ts#L130)
+Defined in: [src/types.ts:146](https://github.com/wholebuzz/search/blob/master/src/types.ts#L146)
 
 ___
 
@@ -236,7 +236,7 @@ ___
 
 **Returns:** *Promise*<[*Posting*](types.posting.md)[]\>
 
-Defined in: [src/types.ts:132](https://github.com/wholebuzz/search/blob/master/src/types.ts#L132)
+Defined in: [src/types.ts:148](https://github.com/wholebuzz/search/blob/master/src/types.ts#L148)
 
 ___
 
@@ -254,7 +254,7 @@ ___
 
 **Returns:** *Promise*<[*Posting*](types.posting.md)[]\>
 
-Defined in: [src/types.ts:133](https://github.com/wholebuzz/search/blob/master/src/types.ts#L133)
+Defined in: [src/types.ts:149](https://github.com/wholebuzz/search/blob/master/src/types.ts#L149)
 
 ___
 
@@ -283,4 +283,4 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Defined in: [src/types.ts:131](https://github.com/wholebuzz/search/blob/master/src/types.ts#L131)
+Defined in: [src/types.ts:147](https://github.com/wholebuzz/search/blob/master/src/types.ts#L147)

@@ -116,11 +116,27 @@ export interface TextDataset<Item> extends Dataset<Item> {
 
 export interface LabeledTextDataset<Item> extends TextDataset<Item>, LabeledDataset<Item> {}
 
+export interface EmbeddedLabeledTextDataset<Item>
+  extends TextDataset<Item>,
+    EmbeddedLabeledDataset<Item> {}
+
+export interface FingerprintedLabeledTextDataset<Item>
+  extends TextDataset<Item>,
+    FingerprintedLabeledDataset<Item> {}
+
 export interface LexiconDataset<Item> extends TextDataset<Item> {
   lexicon: Lexicon
 }
 
 export interface LabeledLexiconDataset<Item> extends LexiconDataset<Item>, LabeledDataset<Item> {}
+
+export interface EmbeddedLabeledLexiconDataset<Item>
+  extends LexiconDataset<Item>,
+    EmbeddedLabeledDataset<Item> {}
+
+export interface FingerprintedLabeledLexiconDataset<Item>
+  extends LexiconDataset<Item>,
+    FingerprintedLabeledDataset<Item> {}
 
 export interface PostingListDatabase extends DocumentDatabase {
   db: Record<string, PostingList>

@@ -28,4 +28,4 @@
 
 **Returns:** *Promise*<[*string*, *number*][]\>
 
-Defined in: [src/types.ts:137](https://github.com/wholebuzz/search/blob/master/src/types.ts#L137)
+Defined in: [src/types.ts:153](https://github.com/wholebuzz/search/blob/master/src/types.ts#L153)

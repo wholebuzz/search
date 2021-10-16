@@ -18,6 +18,10 @@
 
   ↳↳ [*LabeledTextDataset*](types.labeledtextdataset.md)
 
+  ↳↳ [*EmbeddedLabeledTextDataset*](types.embeddedlabeledtextdataset.md)
+
+  ↳↳ [*FingerprintedLabeledTextDataset*](types.fingerprintedlabeledtextdataset.md)
+
   ↳↳ [*LexiconDataset*](types.lexicondataset.md)
 
 ## Table of contents
