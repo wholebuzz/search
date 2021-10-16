@@ -46,7 +46,7 @@
 
 • **db**: *Record*<string, [*PostingList*](types.postinglist.md)\>
 
-Defined in: [src/types.ts:86](https://github.com/wholebuzz/search/blob/master/src/types.ts#L86)
+Defined in: [src/types.ts:91](https://github.com/wholebuzz/search/blob/master/src/types.ts#L91)
 
 ___
 
@@ -54,15 +54,15 @@ ___
 
 • `Optional` **docids**: [*DocIdDatabase*](types.dociddatabase.md)
 
-Defined in: [src/types.ts:88](https://github.com/wholebuzz/search/blob/master/src/types.ts#L88)
+Defined in: [src/types.ts:93](https://github.com/wholebuzz/search/blob/master/src/types.ts#L93)
 
 ___
 
 ### lexicon
 
-• **lexicon**: [*IDFMap*](types.idfmap.md)
+• **lexicon**: [*Lexicon*](types.lexicon.md)
 
-Defined in: [src/types.ts:87](https://github.com/wholebuzz/search/blob/master/src/types.ts#L87)
+Defined in: [src/types.ts:92](https://github.com/wholebuzz/search/blob/master/src/types.ts#L92)
 
 ## Methods
 
@@ -82,7 +82,7 @@ Defined in: [src/types.ts:87](https://github.com/wholebuzz/search/blob/master/sr
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:64](https://github.com/wholebuzz/search/blob/master/src/types.ts#L64)
+Defined in: [src/types.ts:69](https://github.com/wholebuzz/search/blob/master/src/types.ts#L69)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:66](https://github.com/wholebuzz/search/blob/master/src/types.ts#L66)
+Defined in: [src/types.ts:71](https://github.com/wholebuzz/search/blob/master/src/types.ts#L71)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:61](https://github.com/wholebuzz/search/blob/master/src/types.ts#L61)
+Defined in: [src/types.ts:66](https://github.com/wholebuzz/search/blob/master/src/types.ts#L66)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:63](https://github.com/wholebuzz/search/blob/master/src/types.ts#L63)
+Defined in: [src/types.ts:68](https://github.com/wholebuzz/search/blob/master/src/types.ts#L68)
 
 ___
 
@@ -149,7 +149,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:70](https://github.com/wholebuzz/search/blob/master/src/types.ts#L70)
+Defined in: [src/types.ts:75](https://github.com/wholebuzz/search/blob/master/src/types.ts#L75)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:67](https://github.com/wholebuzz/search/blob/master/src/types.ts#L67)
+Defined in: [src/types.ts:72](https://github.com/wholebuzz/search/blob/master/src/types.ts#L72)
 
 ___
 
@@ -173,7 +173,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:69](https://github.com/wholebuzz/search/blob/master/src/types.ts#L69)
+Defined in: [src/types.ts:74](https://github.com/wholebuzz/search/blob/master/src/types.ts#L74)
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:68](https://github.com/wholebuzz/search/blob/master/src/types.ts#L68)
+Defined in: [src/types.ts:73](https://github.com/wholebuzz/search/blob/master/src/types.ts#L73)
 
 ___
 
@@ -197,7 +197,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:71](https://github.com/wholebuzz/search/blob/master/src/types.ts#L71)
+Defined in: [src/types.ts:76](https://github.com/wholebuzz/search/blob/master/src/types.ts#L76)
 
 ___
 
@@ -209,7 +209,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:72](https://github.com/wholebuzz/search/blob/master/src/types.ts#L72)
+Defined in: [src/types.ts:77](https://github.com/wholebuzz/search/blob/master/src/types.ts#L77)
 
 ___
 
@@ -219,7 +219,7 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Defined in: [src/types.ts:90](https://github.com/wholebuzz/search/blob/master/src/types.ts#L90)
+Defined in: [src/types.ts:95](https://github.com/wholebuzz/search/blob/master/src/types.ts#L95)
 
 ___
 
@@ -236,7 +236,7 @@ ___
 
 **Returns:** *Promise*<[*Posting*](types.posting.md)[]\>
 
-Defined in: [src/types.ts:92](https://github.com/wholebuzz/search/blob/master/src/types.ts#L92)
+Defined in: [src/types.ts:97](https://github.com/wholebuzz/search/blob/master/src/types.ts#L97)
 
 ___
 
@@ -254,7 +254,7 @@ ___
 
 **Returns:** *Promise*<[*Posting*](types.posting.md)[]\>
 
-Defined in: [src/types.ts:93](https://github.com/wholebuzz/search/blob/master/src/types.ts#L93)
+Defined in: [src/types.ts:98](https://github.com/wholebuzz/search/blob/master/src/types.ts#L98)
 
 ___
 
@@ -273,7 +273,7 @@ ___
 
 Inherited from: [DocumentDatabase](types.documentdatabase.md)
 
-Defined in: [src/types.ts:65](https://github.com/wholebuzz/search/blob/master/src/types.ts#L65)
+Defined in: [src/types.ts:70](https://github.com/wholebuzz/search/blob/master/src/types.ts#L70)
 
 ___
 
@@ -283,4 +283,4 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Defined in: [src/types.ts:91](https://github.com/wholebuzz/search/blob/master/src/types.ts#L91)
+Defined in: [src/types.ts:96](https://github.com/wholebuzz/search/blob/master/src/types.ts#L96)

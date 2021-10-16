@@ -40,7 +40,7 @@ ___
 
 • **doclen**: *number*
 
-Defined in: [src/types.ts:24](https://github.com/wholebuzz/search/blob/master/src/types.ts#L24)
+Defined in: [src/types.ts:29](https://github.com/wholebuzz/search/blob/master/src/types.ts#L29)
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 • **occurrences**: *ArrayLike*<number\>
 
-Defined in: [src/types.ts:26](https://github.com/wholebuzz/search/blob/master/src/types.ts#L26)
+Defined in: [src/types.ts:31](https://github.com/wholebuzz/search/blob/master/src/types.ts#L31)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 • **score**: *number*
 
-Defined in: [src/types.ts:23](https://github.com/wholebuzz/search/blob/master/src/types.ts#L23)
+Defined in: [src/types.ts:28](https://github.com/wholebuzz/search/blob/master/src/types.ts#L28)
 
 ___
 
@@ -64,4 +64,4 @@ ___
 
 • **sections**: *ArrayLike*<number\>
 
-Defined in: [src/types.ts:25](https://github.com/wholebuzz/search/blob/master/src/types.ts#L25)
+Defined in: [src/types.ts:30](https://github.com/wholebuzz/search/blob/master/src/types.ts#L30)

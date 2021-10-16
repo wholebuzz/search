@@ -101,7 +101,7 @@ ___
 
 ### lexicon
 
-• **lexicon**: [*IDFMap*](../interfaces/types.idfmap.md)
+• **lexicon**: [*Lexicon*](../interfaces/types.lexicon.md)
 
 Implementation of: [PostingListDatabase](../interfaces/types.postinglistdatabase.md).[lexicon](../interfaces/types.postinglistdatabase.md#lexicon)
 

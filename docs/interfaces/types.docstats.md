@@ -19,7 +19,7 @@
 
 • `Optional` **archived**: *string*
 
-Defined in: [src/types.ts:45](https://github.com/wholebuzz/search/blob/master/src/types.ts#L45)
+Defined in: [src/types.ts:50](https://github.com/wholebuzz/search/blob/master/src/types.ts#L50)
 
 ___
 
@@ -27,7 +27,7 @@ ___
 
 • `Optional` **doclen**: *number*
 
-Defined in: [src/types.ts:43](https://github.com/wholebuzz/search/blob/master/src/types.ts#L43)
+Defined in: [src/types.ts:48](https://github.com/wholebuzz/search/blob/master/src/types.ts#L48)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 • **guid**: *string*
 
-Defined in: [src/types.ts:42](https://github.com/wholebuzz/search/blob/master/src/types.ts#L42)
+Defined in: [src/types.ts:47](https://github.com/wholebuzz/search/blob/master/src/types.ts#L47)
 
 ___
 
@@ -43,4 +43,4 @@ ___
 
 • `Optional` **sections**: *number*[]
 
-Defined in: [src/types.ts:44](https://github.com/wholebuzz/search/blob/master/src/types.ts#L44)
+Defined in: [src/types.ts:49](https://github.com/wholebuzz/search/blob/master/src/types.ts#L49)

@@ -1,31 +1,27 @@
 import { FileSystem } from '@wholebuzz/fs/lib/fs'
 import { readJSON, writeJSON } from '@wholebuzz/fs/lib/json'
 import { fnv1aHash, tokenizeForSearch } from './tokens'
-import { DocumentDatabase, IDFMap, IdValue } from './types'
+import { DocumentDatabase, IdValue, Lexicon, TextDataset } from './types'
 
 export const mapObject = require('map-obj')
 
-export const tokenIdHash = (idf: IDFMap) => (x: string, size: number) =>
-  fnv1aHash(String(idf.idf[x].id), size)
+export const tokenIdHash = (lexicon: Lexicon) => (x: string, size: number) =>
+  fnv1aHash(String(lexicon.idf[x].id), size)
 
-export async function readIDFMap(fs: FileSystem, path: string) {
-  return (await readJSON(fs, path)) as IDFMap
+export async function readLexicon(fs: FileSystem, path: string) {
+  return (await readJSON(fs, path)) as Lexicon
 }
 
-export async function writeIDFMap(fs: FileSystem, path: string, idf: IDFMap) {
-  return writeJSON(fs, path, idf)
+export async function writeLexicon(fs: FileSystem, path: string, lexicon: Lexicon) {
+  return writeJSON(fs, path, lexicon)
 }
 
-export function newIDFMap<X>(
-  arr: X[],
-  getText: (x: X) => string,
-  config: Record<string, any>
-): IDFMap {
+export function newLexicon<Item>(data: TextDataset<Item>, config: Record<string, any>): Lexicon {
   const idf: Record<string, IdValue> = {}
   let totalCorpusLength = 0
   let termId = 0
-  for (const item of arr) {
-    let tokens: any = getText(item)
+  for (const item of data.items) {
+    let tokens: any = data.getItemText(item)
     tokenizeForSearch.forEach((tf) => (tokens = tf(tokens)))
     const uniqueTokens = new Set()
     tokens.forEach((t: string) => uniqueTokens.add(t))
@@ -37,7 +33,7 @@ export function newIDFMap<X>(
     totalCorpusLength += tokens.length
   }
   const { k } = config.bm25Params
-  const totalDocs = arr.length
+  const totalDocs = data.items.length
   Object.keys(idf).forEach((t) => {
     const n = idf[t].value
     idf[t].value = Math.log((totalDocs - n + 0.5) / (n + 0.5) + k)
@@ -53,7 +49,7 @@ export function newIDFMap<X>(
   }
 }
 
-export function getIDFMap(engine: DocumentDatabase): IDFMap {
+export function getLexicon(engine: DocumentDatabase): Lexicon {
   const tokens = engine.getTokens()
   const tokenIDF = engine.getIDF()
   const idf: Record<string, IdValue> = {}
@@ -72,11 +68,11 @@ export function getIDFMap(engine: DocumentDatabase): IDFMap {
   return ret
 }
 
-export function getTFIDF(text: string, idf: IDFMap) {
-  const { b, k1 } = idf.config.bm25Params
+export function getTFIDF(text: string, lexicon: Lexicon): Record<string, number> {
+  const { b, k1 } = lexicon.config.bm25Params
   let tokens: any = text
   tokenizeForSearch.forEach((tf) => (tokens = tf(tokens)))
-  const normalizationFactor = 1 - b + b * (tokens.length / idf.avgCorpusLength)
+  const normalizationFactor = 1 - b + b * (tokens.length / lexicon.avgCorpusLength)
 
   const freqs: Record<string, number> = {}
   tokens.forEach((token: string) => (freqs[token] = (freqs[token] || 0) + 1))
@@ -86,11 +82,13 @@ export function getTFIDF(text: string, idf: IDFMap) {
     const freq = freqs[term]
     const value =
       Math.abs((freq * (k1 + 1)) / (k1 * normalizationFactor + freq)) *
-      (idf.idf[term]?.value || idf.minIDF)
+      (lexicon.idf[term]?.value || lexicon.minIDF)
 
     ret[term] =
       Math.sign(freq) *
-      (idf.config.freqPrecision ? parseFloat(value.toFixed(idf.config.freqPrecision)) : value)
+      (lexicon.config.freqPrecision
+        ? parseFloat(value.toFixed(lexicon.config.freqPrecision))
+        : value)
   })
   return ret
 }

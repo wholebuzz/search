@@ -13,7 +13,7 @@ import {
   MinHeap,
   reloadHeapItem,
 } from './heap'
-import { readIDFMap, writeIDFMap } from './idf'
+import { readLexicon, writeLexicon } from './lexicon'
 import { MemoryPostingListDatabase, sorted } from './posting'
 import { createBinaryRecordReader, createBinaryRecordWriter, PostingBlock } from './record'
 import { fnv1a } from './tokens'
@@ -38,7 +38,7 @@ export class FilePostingListDatabase extends MemoryPostingListDatabase {
 
   async init() {
     try {
-      const lexicon = await readIDFMap(this.fs, this.directory + '/lexicon.json.gz')
+      const lexicon = await readLexicon(this.fs, this.directory + '/lexicon.json.gz')
       if (lexicon) {
         this.lexicon = lexicon
         this.lexicon.config = {
@@ -64,7 +64,7 @@ export class FilePostingListDatabase extends MemoryPostingListDatabase {
     const shutdownWaiting = this.shutdownWaiting
     this.shutdownWaiting = []
     await super.shutdown()
-    await writeIDFMap(this.fs, this.directory + '/lexicon.json.gz', this.lexicon)
+    await writeLexicon(this.fs, this.directory + '/lexicon.json.gz', this.lexicon)
     for (const cb of shutdownWaiting) cb()
   }
 

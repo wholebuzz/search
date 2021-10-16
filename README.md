@@ -9,7 +9,7 @@ Persistent inverted index and BM25 search engine with proximity penalty.
 - [db](docs/modules/db.md)
 - [docids](docs/modules/docids.md)
 - [heap](docs/modules/heap.md)
-- [idf](docs/modules/idf.md)
+- [lexicon](docs/modules/lexicon.md)
 - [posting](docs/modules/posting.md)
 - [record](docs/modules/record.md)
 - [search](docs/modules/search.md)

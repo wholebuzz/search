@@ -19,6 +19,11 @@ export interface IdValue {
   value: number
 }
 
+export interface TextDataset<Item> {
+  getItemText: (x: Item) => string
+  items: Item[]
+}
+
 export interface Posting extends HasDocId {
   score: number
   doclen: number
@@ -72,7 +77,7 @@ export interface DocumentDatabase {
   getTotalDocs(): number
 }
 
-export interface IDFMap {
+export interface Lexicon {
   config: Record<string, any>
   idf: Record<string, IdValue>
   minIDF: number
@@ -84,7 +89,7 @@ export interface IDFMap {
 
 export interface PostingListDatabase extends DocumentDatabase {
   db: Record<string, PostingList>
-  lexicon: IDFMap
+  lexicon: Lexicon
   docids?: DocIdDatabase
 
   init(): Promise<void>

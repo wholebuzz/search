@@ -164,7 +164,7 @@ ___
 
 ### lexicon
 
-• **lexicon**: [*IDFMap*](../interfaces/types.idfmap.md)
+• **lexicon**: [*Lexicon*](../interfaces/types.lexicon.md)
 
 Inherited from: [MemoryPostingListDatabase](posting.memorypostinglistdatabase.md).[lexicon](posting.memorypostinglistdatabase.md#lexicon)
 

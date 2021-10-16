@@ -3,14 +3,14 @@ import { readJSON } from '@wholebuzz/fs/lib/json'
 import * as assert from 'assert'
 import _ from 'lodash'
 import { FilePostingListDatabase } from './db'
-import { getIDFMap, getTFIDF, newIDFMap, simhashIDF, tokenIdHash } from './idf'
+import { getLexicon, getTFIDF, newLexicon, simhashIDF, tokenIdHash } from './lexicon'
 import { addPostingScores, MemoryPostingListDatabase } from './posting'
 import { searchConfig, SearchEngine } from './search'
 import { Event, recreateDirectory, sleep } from './test.fixture'
 import { tokenizeForSearch } from './tokens'
 import { DocumentDatabase, HasFingerprint } from './types'
 
-it('Should hash the same with IDFMap and SearchEngine', async () => {
+it('Should hash the same with Lexicon and SearchEngine', async () => {
   const locale = 'en_US'
   const fingerprintBits = 64
   const memoryPl = new SearchEngine(new MemoryPostingListDatabase(searchConfig))
@@ -55,8 +55,8 @@ it('Should hash the same with IDFMap and SearchEngine', async () => {
     expect(results3[i][1]).toBeCloseTo(results[i][1])
   }
 
-  const idf = newIDFMap(input, (x) => x?.props?.title ?? '', config)
-  const winkIDF = getIDFMap(wink)
+  const idf = newLexicon({ items: input, getItemText: (x) => x?.props?.title ?? '' }, config)
+  const winkIDF = getLexicon(wink)
   winkIDF.config.freqPrecision = config.freqPrecision
   winkIDF.config.scoreTermPair = config.scoreTermPair
   assert.deepEqual(winkIDF, idf)

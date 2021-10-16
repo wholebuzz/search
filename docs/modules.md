@@ -9,7 +9,7 @@
 - [db](modules/db.md)
 - [docids](modules/docids.md)
 - [heap](modules/heap.md)
-- [idf](modules/idf.md)
+- [lexicon](modules/lexicon.md)
 - [posting](modules/posting.md)
 - [record](modules/record.md)
 - [search](modules/search.md)

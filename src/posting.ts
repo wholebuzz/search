@@ -1,11 +1,11 @@
 import { compareDocId } from './heap'
-import { mapObject } from './idf'
+import { mapObject } from './lexicon'
 import { tokenizeForSearch } from './tokens'
 import {
   DocIdDatabase,
   Document,
-  IDFMap,
   IdValue,
+  Lexicon,
   Posting,
   PostingList,
   PostingListDatabase,
@@ -18,7 +18,7 @@ export const sorted = require('sorted-array-functions')
 export class MemoryPostingListDatabase implements PostingListDatabase {
   db: Record<string, PostingList> = {}
   docids?: DocIdDatabase
-  lexicon: IDFMap
+  lexicon: Lexicon
   prepTasks = tokenizeForSearch
   sections: string[] = []
   sectionWeights: number[] = []
