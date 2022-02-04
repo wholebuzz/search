@@ -1,4 +1,4 @@
-# @wholebuzz/search
+# @wholebuzz/search ![image](https://img.shields.io/npm/v/@wholebuzz/search) [![test](https://github.com/wholebuzz/search/actions/workflows/test.yaml/badge.svg)](https://github.com/wholebuzz/search/actions/workflows/test.yaml)
 
 Persistent inverted index and BM25 search engine with proximity penalty.
 
@@ -23,7 +23,7 @@ Scaffolded off [wink-bm25-text-search](https://www.npmjs.com/package/wink-bm25-t
 
 ## Example
 
-```
+```typescript
 import { LocalFileSystem } from '@wholebuzz/fs/lib/fs'
 import { FilePostingListDatabase } from '@wholebuzz/search/lib/db'
 import { calcProximityPostingScores } from '@wholebuzz/search/lib/posting'
