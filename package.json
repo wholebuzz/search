@@ -1,6 +1,6 @@
 {
   "name": "@wholebuzz/search",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Persistent inverted index and BM25 search engine with proximity penalty.",
   "author": "wholebuzz",
   "license": "Apache-2.0",
@@ -27,9 +27,11 @@
   "dependencies": {
     "@sindresorhus/fnv1a": "^2.0.1",
     "@wholebuzz/binary-merge": "^0.0.1",
-    "@wholebuzz/fs": "^0.0.12",
+    "@wholebuzz/fs": "^1.2.5",
     "base62": "^2.0.1",
     "ellipsize": "^0.1.0",
+    "fs-ext": "^2.0.0",
+    "glob-stream": "^7.0.0",
     "entities": "^2.0.3",
     "level": "^7.0.0",
     "map-obj": "^4.1.0",

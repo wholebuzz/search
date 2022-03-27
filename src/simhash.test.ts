@@ -1,5 +1,5 @@
-import { LocalFileSystem } from '@wholebuzz/fs/lib/fs'
 import { readJSON } from '@wholebuzz/fs/lib/json'
+import { LocalFileSystem } from '@wholebuzz/fs/lib/local'
 import * as assert from 'assert'
 import _ from 'lodash'
 import { FilePostingListDatabase } from './db'

@@ -196,7 +196,7 @@ export class FilePostingListDatabase extends MemoryPostingListDatabase {
       await this.fs.copyFile(outUrl, url)
       await this.fs.removeFile(outUrl)
     }
-    index.fileInode = (await this.fs.getFileStatus(url, false)).inode
+    index.fileInode = (await this.fs.getFileStatus(url, { version: false })).inode
     index.fileEntries = numNewEntries
   }
 
